@@ -1,6 +1,6 @@
 <?
 
-require_once($_SERVER ["DOCUMENT_ROOT"] . "/Icelus/Bootstrap/Application.php");
+require_once($_SERVER ["DOCUMENT_ROOT"] . "/icelus/bootstrap/Application.php");
 
 use Icelus\Bootstrap\Application;
 use Icelus\Controller\Route\RouteImpl;
