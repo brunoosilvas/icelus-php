@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	
+	<persistence>
+		<url>mysql:host=localhost;dbname=site;port=3306</url>
+		<username>root</username>
+		<password>vertrigo</password>
+	</persistence>
+	
+</config>

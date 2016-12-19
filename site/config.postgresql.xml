@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+	
+	<persistence>
+		<url>pgsql:host=localhost;dbname=icelus;port=5432</url>
+		<username>postgres</username>
+		<password>admin</password>
+	</persistence>
+	
+	<mapping>
+		<resource class="\site\model\dao\Usuarios" />
+		<resource class="\site\model\dao\Clientes" />
+		<resource class="\site\model\dao\Profissoes" />
+	</mapping>
+	
+</config>

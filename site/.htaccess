@@ -1,0 +1,5 @@
+Options -Indexes
+
+<FilesMatch "\.(xml|ini|json)$">
+	Deny from all
+</FilesMatch>
