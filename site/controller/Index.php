@@ -15,7 +15,7 @@ class Index extends ActionController {
 			
 	public function action($param) {
 				
-
+		$profissoes = new Profissoes();
 	}	
 	
 	public function hasSession() {

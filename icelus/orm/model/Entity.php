@@ -9,13 +9,15 @@
  *
  */
 
-namespace icelus\orm\Model;
+namespace icelus\orm\model;
 
-abstract class Entity
+use icelus\orm\model\dao\Dao;
+
+abstract class Entity implements Dao
 {
 	protected $resource;
 	
 	public function __construct() {
-		$this->resource = get_class($this);
+		$this->resource = get_class($this);		
 	}	
 }

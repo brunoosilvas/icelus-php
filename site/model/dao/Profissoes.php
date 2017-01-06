@@ -1,10 +1,10 @@
 <?php
 
-namespace Site\Model\Dao;
+namespace site\model\Dao;
 
-use Icelus\Orm\Model\Entity;
-use Icelus\Orm\Type\Integer;
-use Icelus\Orm\Type\Strings;
+use icelus\orm\model\Entity;
+use icelus\orm\type\Integer;
+use icelus\orm\type\Strings;
 
 class Profissoes extends Entity
 {

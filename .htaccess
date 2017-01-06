@@ -15,6 +15,6 @@ RewriteRule ^([a-z-]+)/([a-z-]+)/([0-9]+)$ routes.php?module=Site&class=$1&metho
 RewriteRule ^([a-z-]+)/([a-z-]+)/([0-9]+)/([a-z-0-9-]+)$ routes.php?module=Site&class=$1&method=$2&param=$3 [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^/?$ routes.php?module=Site&class=index [NC,L]
+RewriteRule ^/?$ routes.php?module=site&class=index [NC,L]
 
 ErrorDocument 404 /notfound
