@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @namespace icelus\orm\mapping
  *
  * @author Bruno Silva
  * @license MIT Licence

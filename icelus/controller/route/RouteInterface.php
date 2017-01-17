@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @namespace icelus\controller\route
  *
  * @author Bruno Silva
  * @license MIT Licence

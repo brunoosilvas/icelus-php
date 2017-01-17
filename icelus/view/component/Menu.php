@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @namespace icelus\view\component
  *
  * @author Bruno Silva
  * @license MIT Licence

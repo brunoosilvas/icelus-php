@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @namespace icelus\orm\model\dao
  *
  * @author Bruno Silva
  * @license MIT Licence

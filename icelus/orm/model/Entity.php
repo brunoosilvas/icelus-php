@@ -1,7 +1,6 @@
 <?php
 
 /**
- * @namespace icelus\orm\model\dao
  *
  * @author Bruno Silva
  * @license MIT Licence
@@ -18,6 +17,7 @@ abstract class Entity implements Dao
 	protected $resource;
 	
 	public function __construct() {
-		$this->resource = get_class($this);		
+		$this->resource = get_class($this);
+		echo var_dump($this);		
 	}	
 }
