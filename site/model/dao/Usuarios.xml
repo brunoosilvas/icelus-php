@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<entity name="usuarios" class="\Site\Model\Dao\Usuarios">
+<entity name="usuarios" class="\site\model\dao\Usuarios">
 	
 	<primarykey>
-		<column name="id" type="\Icelus\Orm\Type\Integer" sequence="usuarios_id_seq" />
+		<column name="id" type="\icelus\orm\type\Integer" sequence="usuarios_id_seq" />
 	</primarykey>
 	
 	<columns>
-		<column name="nome" type="\Icelus\Orm\Type\String" />
-		<column name="senha" type="\Icelus\Orm\Type\String" />
+		<column name="nome" type="\icelus\orm\type\String" />
+		<column name="senha" type="\icelus\orm\type\String" />
 	</columns>
 	
-	<foreingkey>
-		<column name="profissao" type="\Icelus\Orm\Type\Integer" 
-			class="\Site\Model\Dao\Profissoes" nullable="false" />
-	</foreingkey>
+	<foreingkeys>
+		<column name="profissao" class="\site\model\dao\Profissoes" nullable="false" />
+		<column name="classificacao" class="\site\model\dao\Classificacoes" nullable="false" />
+	</foreingkeys>
 	
 </entity>

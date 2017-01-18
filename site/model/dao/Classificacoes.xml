@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity name="classificacoes" class="\site\model\dao\Classificacoes">
+	
+	<primarykey>
+		<column name="id" type="\icelus\orm\type\Integer" sequence="classificacoes_id_seq" />
+	</primarykey>
+	
+	<columns>
+		<column name="classificacao" type="\icelus\orm\type\String" />
+	</columns>
+	
+	<foreingkeys>
+		
+	</foreingkeys>
+	
+</entity>

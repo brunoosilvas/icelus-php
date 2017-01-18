@@ -26,18 +26,18 @@ class FactoryController
 	
 	public function instantiate() 
 	{		
-		if (! Files::exists($this->uri, null))
+		if (! Files::exists($this->uri, NULL))
 			throw new \ErrorException(sprintf("Controller not found in path '%s'", $this->uri));
 
-		$controller = Utils::convertToNamespace($this->uri);
-		$this->controller = new $controller;
+		$this->controller = Utils::convertToNamespace($this->uri);
+		$this->controller = new $this->controller;
 		
 		return $this->controller;
 	} 
 	
 	public function execute($method, $param) 
 	{		
-		if (!method_exists($this->controller, $method))
+		if (! method_exists($this->controller, $method))
 			throw new \ErrorException(sprintf("Method '%s' in controller '%s' is missing.", $method, $this->uri));
 		
 		call_user_func(array($this->controller, $method), $param);
