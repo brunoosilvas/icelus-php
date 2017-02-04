@@ -10,7 +10,7 @@
 
 namespace icelus\orm\type;
 
-abstract class Generic implements TypeInterface {
+abstract class Generic implements Type {
 	
 	protected $value;
 	

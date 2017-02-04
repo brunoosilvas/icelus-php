@@ -10,7 +10,7 @@
 
 namespace icelus\orm\type;
 
-interface TypeInterface {		
+interface Type {		
 	
 	public function compare(Type $type);
 	
