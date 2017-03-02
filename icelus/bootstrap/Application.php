@@ -45,7 +45,27 @@ class Application
 		$this->registerAutoloadClass();
 		$this->notifyError();
 		
+		$this->bufferPageStart();
+	}
+
+	/**
+	 * Control de flush page
+	 * 
+	 * @return void	 
+	 */
+	public function bufferPageStart()
+	{
 		ob_start();
+	}
+
+	/**
+	 * Control de flush page
+	 * 
+	 * @return void	 
+	 */
+	public function bufferPageEnd()
+	{
+		ob_end_clean();
 	}
 	
 	/**
@@ -114,7 +134,7 @@ class Application
 	
 	public function restoreError(\ErrorException $exception) 
 	{
-		ob_end_clean();
+		$this->bufferPageEnd();
 		
 		$time = time() + 10; //10 segundos
 		setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
@@ -128,7 +148,7 @@ class Application
 	
 	public function restoreFatalError(\Error $error)
 	{
-		ob_end_clean();
+		$this->bufferPageEnd();
 		
 		$time = time() + 10; //10 segundos
 		setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
