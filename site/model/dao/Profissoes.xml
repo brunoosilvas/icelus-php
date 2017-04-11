@@ -6,7 +6,7 @@
 	</primarykey>
 	
 	<columns>
-		<column name="profissao" type="\icelus\orm\type\String" />
+		<column name="profissao" type="\icelus\orm\type\Strings" />
 	</columns>
 
 	<foreingkeys>

@@ -18,12 +18,7 @@ class Index extends ActionController {
 		echo "<pre>";		
 		$profissoes = new Profissoes();
 
-		$integer = new Integer(2);
-
-		$string = new Strings("dsadsad");
-
-		echo var_dump($integer);
-		echo var_dump($string);
+		//echo var_dump($profissoes);
 	}	
 	
 	public function hasSession() {

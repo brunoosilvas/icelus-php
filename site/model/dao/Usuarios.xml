@@ -6,8 +6,8 @@
 	</primarykey>
 	
 	<columns>
-		<column name="nome" type="\icelus\orm\type\String" />
-		<column name="senha" type="\icelus\orm\type\String" />
+		<column name="nome" type="\icelus\orm\type\Strings" />
+		<column name="senha" type="\icelus\orm\type\Strings" />
 	</columns>
 	
 	<foreingkeys>
