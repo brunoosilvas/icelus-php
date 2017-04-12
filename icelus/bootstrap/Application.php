@@ -40,7 +40,7 @@ class Application
 	 */
 	public function init($conf) 
 	{	
-		$this->conf = $conf;
+		$this->conf = $conf;		
 		$this->registerTimeExecutionOfScript();
 		$this->registerAutoloadClass();
 		$this->notifyError();
@@ -136,7 +136,7 @@ class Application
 	{
 		$this->bufferPageEnd();
 		
-		$time = time() + 10; //10 segundos
+		$time = time() + (60 * 60 * 24);
 		setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
 		setcookie("error_type", $exception->getCode(), $time, '/');
 		setcookie("error_message", $exception->getMessage(), $time, '/');
@@ -150,16 +150,14 @@ class Application
 	{
 		$this->bufferPageEnd();
 		
-		$time = time() + 10; //10 segundos
+		$time = time() + (60 * 60 * 24);
 		setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
 		setcookie("error_type", $error->getCode(), $time, '/');
 		setcookie("error_message", $error->getMessage(), $time, '/');
 		setcookie("error_line", $error->getLine(), $time, '/');
 		setcookie("error_file", $error->getFile(), $time, '/');
 				
-		Request::redirect($this->uriError(), "");		
-		/*echo '<pre>';
-		echo var_dump($error);*/
+		Request::redirect($this->uriError(), "");
 	}
 	
 	private function uriError()

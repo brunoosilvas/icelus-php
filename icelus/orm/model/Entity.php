@@ -11,13 +11,9 @@
 namespace icelus\orm\model;
 
 use icelus\orm\model\dao\Dao;
+use icelus\orm\mapping\Table;
 
-abstract class Entity implements Dao
+class Entity extends Table implements Dao
 {
-	protected $resource;
 	
-	public function __construct() {
-		$this->resource = get_class($this);
-		echo var_dump($this);		
-	}	
 }
