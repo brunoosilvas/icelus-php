@@ -15,10 +15,11 @@ class Index extends ActionController {
 			
 	public function action($param) {
 				
-		echo "<pre>";		
-		$profissoes = new Profissoes();
+		//echo "<pre>";		
+		//$profissoes = new Profissoes();
 
 		//echo var_dump($profissoes);
+		$this->view->render();
 	}	
 	
 	public function hasSession() {
