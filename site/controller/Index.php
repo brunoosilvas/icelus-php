@@ -19,7 +19,8 @@ class Index extends ActionController {
 		//$profissoes = new Profissoes();
 
 		//echo var_dump($profissoes);
-		$this->view->render();
+		//$this->view->render();
+		phpinfo();
 	}	
 	
 	public function hasSession() {

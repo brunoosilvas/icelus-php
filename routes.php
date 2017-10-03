@@ -1,6 +1,6 @@
 <?
 
-require_once($_SERVER ["DOCUMENT_ROOT"] . "/icelus/bootstrap/Application.php");
+require_once $_SERVER["DOCUMENT_ROOT"] . "/icelus/bootstrap/Application.php";
 
 use icelus\bootstrap\Application;
 use icelus\controller\route\RouteImpl;
@@ -17,8 +17,7 @@ try
 	$application->init($conf);
 		
 	$routeImpl = new RouteImpl();
-	$routeImpl->intercept();	
-	
+	$routeImpl->intercept();
 } 
 catch (ErrorException $exception) 
 {
