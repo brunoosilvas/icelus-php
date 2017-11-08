@@ -2,6 +2,6 @@
 <html lang="pt-br">
 	<? $this->render("header"); ?>
 	<body>		
-		 	teste
+		<?php phpinfo(); ?>
 	</body>
 </html>
