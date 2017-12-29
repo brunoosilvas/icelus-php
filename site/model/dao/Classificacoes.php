@@ -1,6 +1,6 @@
 <?php
 
-namespace site\model\Dao;
+namespace site\model\dao;
 
 use icelus\orm\model\Entity;
 use icelus\orm\type\Integer;
@@ -12,7 +12,7 @@ class Classificacoes extends Entity
 	private $id;
 	private $classificao;
 	
-	public function setId(Integer $id) 
+	public function setId(\Integer $id) 
 	{
 		$this->id = $id;
 	}
@@ -22,7 +22,7 @@ class Classificacoes extends Entity
 		return $this->id;
 	}
 
-	public function setClassificao(Strings $classificao)
+	public function setClassificao(\Strings $classificao)
 	{
 		$this->classificao = $classificao;
 	}

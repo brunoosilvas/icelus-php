@@ -14,6 +14,17 @@ use icelus\util\Utils;
 
 class Classes 
 {
+
+	/**
+	 * Extract name path of class
+	 *
+	 * @param object $class
+	 * @return string
+	 */
+	public static function namespace($class) 
+	{
+		return get_class($class);
+	}
 	
 	/**
 	 * Extract name of class in namespace
@@ -67,6 +78,6 @@ class Classes
 			$index++;
 		}	
 		
-		return (! empty($method) ? $method : $normalize);
+		return (!empty($method) ? $method : $normalize);
 	}
 }

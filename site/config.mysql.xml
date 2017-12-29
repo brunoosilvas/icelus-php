@@ -2,9 +2,9 @@
 <config>
 	
 	<persistence>
-		<url>mysql:host=localhost;dbname=site;port=3306</url>
+		<url>mysql:host=localhost;dbname=telemarketing;port=3306</url>
 		<username>root</username>
-		<password>vertrigo</password>
+		<password>admin</password>
 	</persistence>
 	
 </config>

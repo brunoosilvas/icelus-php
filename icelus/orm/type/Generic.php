@@ -10,7 +10,8 @@
 
 namespace icelus\orm\type;
 
-abstract class Generic implements Type {
+abstract class Generic implements Type 
+{
 	
 	protected $value;
 	
@@ -18,7 +19,8 @@ abstract class Generic implements Type {
 	
 	public abstract function isValid($value);
 	
-	public function compareIsValid(Type $type) {
+	public function compareIsValid(Type $type) 
+	{
 		if ($this->value() == null || $type->value() == null)
 			throw new \ErrorException("Type not compare, this value is NULL.");
 		
@@ -26,8 +28,8 @@ abstract class Generic implements Type {
 			throw new \ErrorException("Type not compare, types different.");
 	}
 	
-	public function compare(Type $type) {
-						
+	public function compare(Type $type) 
+	{
 		$this->compareIsValid($type);
 		
 		$compare = 0;

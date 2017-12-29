@@ -1,6 +1,6 @@
 <?php
 
-namespace site\model\Dao;
+namespace site\model\dao;
 
 use icelus\orm\model\Entity;
 use icelus\orm\type\Integer;
@@ -18,7 +18,7 @@ class Usuarios extends Entity
 
 	public function setId(Integer $id) 
 	{
-		$this->id = $id;
+		$this->id = $id;		
 	}
 
 	public function getId()

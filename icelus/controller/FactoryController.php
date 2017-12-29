@@ -31,16 +31,17 @@ class FactoryController
 
 		$this->controller = Utils::convertToNamespace($this->uri);
 		$this->controller = new $this->controller;
-		
+
 		return $this->controller;
 	} 
 	
 	public function execute($method, $param) 
 	{		
-		if (! method_exists($this->controller, $method))
+		$reflectionClass = new \ReflectionClass($this->controller);
+		if (!$reflectionClass->hasMethod($method))
 			throw new \ErrorException(sprintf("Method '%s' in controller '%s' is missing.", $method, $this->uri));
 		
-		call_user_func(array($this->controller, $method), $param);
+		$reflectionClass->getMethod($method)->invoke($this->controller, $param);
 	}	
 	
 }

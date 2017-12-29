@@ -1,9 +1,9 @@
 <?php
 
-namespace Site\Controller;
+namespace site\controller;
 
-use Icelus\Controller\ActionController;
-use Site\Model\Rules\Usuarios;
+use icelus\controller\ActionController;
+use site\model\rules\Usuarios;
 
 class Notfound extends ActionController {
 			

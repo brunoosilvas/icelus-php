@@ -1,35 +1,60 @@
 <?php
 
-namespace site\model\Dao;
+namespace site\model\dao;
 
 use icelus\orm\model\Entity;
 use icelus\orm\type\Integer;
 use icelus\orm\type\Strings;
 
+use site\model\dao\Perfis;
+
+/**
+ * @Table({name : "profissoes", schema = "icelus", view = false})
+ */
 class Profissoes extends Entity
 {
 
 	private $id;
 	private $profissao;
-	
-	public function setId(Integer $id) 
-	{
-		$this->id = $id;
-	}
+	private $perfis;
 
+	/**
+	 * @Column({"name" : "id", "type" : "icelus\\orm\\type\\Integer", "nullable" : false})
+	 */
 	public function getId()
 	{
 		return $this->id;
 	}
+	
+	public function setId(\Integer $id) 
+	{
+		$this->id = $id;
+	}
 
-	public function setProfissao(Strings $profissao)
+	/**
+	 * @Column({"name" : "profissao", "type" : "icelus\\orm\\type\\String", "nullable" : false})
+	 */
+	public function getProfissao()
+	{
+		return $this->profissao;
+	}
+
+	public function setProfissao(\Strings $profissao)
 	{
 		$this->profissao = $profissao;
 	}
 
-	public function getProfissao()
+	/**
+	 * @Table({"name" : "perfis", "type" : "site\\model\\dao\\Perfis", "nullable" : false})
+	 */
+	public function getPerfis()
 	{
-		return $this->profissao;
+		return $this->perfis;
+	}
+
+	public function setPerfis(\Perfis $perfis) 
+	{
+		$this->perfis = $perfis;
 	}
 	
 }

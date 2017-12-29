@@ -12,20 +12,23 @@ namespace icelus\orm;
 
 use icelus\util\Files;
 
-class SessionFactory {
+class SessionFactory 
+{
 	
 	private static $instance;
 	private $conf;
 	private $session;	
 	
-	public static function instance() {
+	public static function instance() 
+	{
 		if (self::$instance == NULL)
 			self::$instance = new self();
 	
 		return self::$instance;
 	}
 	
-	public function configure($uri = NULL) {
+	public function configure($uri = NULL) 
+	{
 		$this->conf = Files::xmlLoad($uri);
 		return $this;
 	}
@@ -35,11 +38,12 @@ class SessionFactory {
 		return $this->conf;
 	}
 	
-	public function session() {
-		
+	public function session() 
+	{		
 		try 
 		{
-			if ($this->session == NULL) {
+			if ($this->session == NULL) 
+			{
 				
 				$this->session = new \PDO(
 					$this->conf->persistence->url,

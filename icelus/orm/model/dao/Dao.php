@@ -10,6 +10,7 @@
 
 namespace icelus\orm\model\dao;
 
-interface Dao {
+interface Dao 
+{
 	
 }

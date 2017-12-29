@@ -12,22 +12,26 @@ namespace icelus\orm\type;
 
 use icelus\orm\type\Generic;
 
-class Date extends Generic {
+class Date extends Generic 
+{
 
 	private $timezone;		
 	
-	public function __construct($value = null, $timezone = null) {
+	public function __construct($value = null, $timezone = null) 
+	{
 		$this->value = null;
 		$this->timezone = $timezone;
 		
 		$this->isValid($value);
 	}
 	
-	public function value() {
+	public function value() 
+	{
 		return $this->value;
 	}
 	
-	public function isValid($value) {
+	public function isValid($value) 
+	{
 		try {
 			$this->value = new \DateTime($value, new \DateTimeZone($this->timezone));
 		} catch (\Exception $e) {
@@ -35,16 +39,19 @@ class Date extends Generic {
 		}
 	}
 	
-	public static function now($pattern) {
+	public static function now($pattern) 
+	{
 		$now = new \DateTime("NOW", new \DateTimeZone($this->timezone));
 		return $now->format($pattern);
 	}
 	
-	public function format($pattern) {
+	public function format($pattern) 
+	{
 		return $this->value()->format($pattern);
 	}
 	
-	public function compare(Type $type) {
+	public function compare(Type $type) 
+	{
 		$this->compareIsValid($type);
 		
 		$pattern = "Y-m-d H:i:s";
@@ -59,37 +66,44 @@ class Date extends Generic {
 		return $compare;
 	}	
 	
-	public function addDays($days = 0) {
+	public function addDays($days = 0) 
+	{
 		$days = "P{$days}D";
 		$this->value()->add(new \DateInterval($days));
 	}
 	
-	public function removeDays($days = 0) {
+	public function removeDays($days = 0) 
+	{
 		$days = "P{$days}D";
 		$this->value()->sub(new \DateInterval($days));
 	}
 		
-	public function addMonth($months = 0) {
+	public function addMonth($months = 0) 
+	{
 		$months = "P{$months}M";
 		$this->value()->add(new \DateInterval($months));
 	}
 	
-	public function removeMonth($months = 0) {
+	public function removeMonth($months = 0) 
+	{
 		$months = "P{$months}M";
 		$this->value()->sub(new \DateInterval($months));
 	}
 	
-	public function addYears($years = 0) {
+	public function addYears($years = 0) 
+	{
 		$years = "P{$years}Y";
 		$this->value()->add(new \DateInterval($years));
 	}
 	
-	public function removeYears($years = 0) {
+	public function removeYears($years = 0) 
+	{
 		$years = "P{$years}Y";
 		$this->value()->sub(new \DateInterval($years));
 	}
 	
-	public function difference(Type $type) {
+	public function difference(Type $type) 
+	{
 		$this->compareIsValid($type);
 		
 		$timestampOne = $this->timestamp();		
@@ -103,7 +117,8 @@ class Date extends Generic {
 		return $difference;
 	}
 	
-	public function timestamp() {
+	public function timestamp() 
+	{
 		$timestamp = mktime((int) $this->value()->format("H"),
 				(int) $this->value()->format("i"),
 				(int) $this->value()->format("s"),

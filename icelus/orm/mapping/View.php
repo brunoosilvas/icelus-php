@@ -10,11 +10,10 @@
 
 namespace icelus\orm\mapping;
 
-class Table 
+class View 
 {
 	private $name;
 	private $schema;
-	private $view;
 	
 	public function __construct() 
 	{

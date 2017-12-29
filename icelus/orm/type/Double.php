@@ -12,19 +12,23 @@ namespace icelus\orm\type;
 
 use Icelus\Orm\Type\Generic;
 
-class Double extends Generic {
+class Double extends Generic 
+{
 	
-	public function __construct($value = null) {
+	public function __construct($value = null) 
+	{
 		$this->value = null;
 		if ($this->isValid($value))
 			$this->value = $value;
 	}
 	
-	public function value() {
+	public function value() 
+	{
 		return $this->value;
 	}
 	
-	public function isValid($value) {
+	public function isValid($value) 
+	{
 		return is_double($value) ? true : false;
 	}
 	
