@@ -32,7 +32,7 @@ class Profissoes extends Entity
 	}
 
 	/**
-	 * @Column({"name" : "profissao", "type" : "icelus\\orm\\type\\String", "nullable" : false})
+	 * @Column({"name" : "profissao", "type" : "icelus\\orm\\type\\Strings", "nullable" : false})
 	 */
 	public function getProfissao()
 	{
@@ -45,7 +45,7 @@ class Profissoes extends Entity
 	}
 
 	/**
-	 * @Table({"name" : "perfis", "type" : "site\\model\\dao\\Perfis", "nullable" : false})
+	 * @Column({"name" : "perfil", "type" : "site\\model\\dao\\Perfis", "nullable" : false, "fk" : true})
 	 */
 	public function getPerfis()
 	{

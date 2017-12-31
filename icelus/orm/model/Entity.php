@@ -14,13 +14,15 @@ use icelus\orm\model\dao\Dao;
 use icelus\orm\mapping\Table;
 use icelus\util\Classes;
 
-class Entity extends Table implements Dao
+class Entity
 {
-    
+    private $mappging;
+
     public function __construct() 
     {
    
         $temp = new \ReflectionClass(Classes::namespace($this));
+
         //echo var_dump($temp->getDocComment());
         //echo var_dump($temp->getMethod("getPerfis")->getDocComment());
 
@@ -56,15 +58,15 @@ class Entity extends Table implements Dao
 
                 echo var_dump($result);
 
-                $first = strpos($string, "{");
-                $last = strrpos($string, "}");
+                $first = strrpos($string, "{");
+                $last = strrpos($string, ")");
                 
                 echo var_dump($first);
                 echo var_dump($last);
                 echo var_dump(strlen($string));
 
                 $result2 = substr($string, 
-                    $first, ($last - $first) + 1);
+                    $first, ($last - $first));
 
                  echo var_dump($result2);
 
