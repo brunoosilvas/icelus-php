@@ -66,8 +66,6 @@ class SessionFactory
 		{
 			throw new \ErrorException($e->getMessage(), $e->getCode(), 0, $e->getFile(), $e->getLine());
 		}
-		
-		return $this->session;		
 	}
 
 	public function getSession()
