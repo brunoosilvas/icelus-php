@@ -10,6 +10,7 @@
 
 namespace icelus\orm;
 
+use icelus\orm\Session;
 use icelus\util\Files;
 
 class SessionFactory 
@@ -27,7 +28,7 @@ class SessionFactory
 		return self::$instance;
 	}
 	
-	public function configure($uri = NULL) 
+	public function configure($uri) 
 	{
 		$this->conf = Files::xmlLoad($uri);
 		return $this;
@@ -38,21 +39,31 @@ class SessionFactory
 		return $this->conf;
 	}
 	
-	public function session() 
+	public function build() 
 	{		
 		try 
 		{
 			if ($this->session == NULL) 
 			{
 				
-				$this->session = new \PDO(
+				$dbc = new \PDO($this->conf->persistence->url,
+					$this->conf->persistence->username,
+					$this->conf->persistence->password
+				);
+
+				$dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
+				$dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+				
+				/* $this->session = new \PDO(
 					$this->conf->persistence->url,
 					$this->conf->persistence->username,
 					$this->conf->persistence->password
 				);
 				
 				$this->session->setAttribute(\PDO::ATTR_PERSISTENT, false);
-				$this->session->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+				$this->session->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION); */
+
+				$this->session = new \Session($dbc, new $this->conf->dialect);
 			}		
 		}
 		catch (\PDOException $e) 

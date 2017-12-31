@@ -10,14 +10,16 @@
 
 namespace icelus\orm\mapping;
 
-class View 
+class Column 
 {
-	private $name;
-	private $schema;
+    private $name;
+    private $sequence;
+    private $type;
+    private $nullable;
+	private $fk;
 	
 	public function __construct() 
 	{
-		$this->resource = get_class($this);		
-		echo var_dump($this);		
+		
 	}	
 }

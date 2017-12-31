@@ -39,9 +39,9 @@ class Date extends Generic
 		}
 	}
 	
-	public static function now($pattern) 
+	public static function now($pattern, $timezone = null) 
 	{
-		$now = new \DateTime("NOW", new \DateTimeZone($this->timezone));
+		$now = new \DateTime("NOW", new \DateTimeZone($timezone));
 		return $now->format($pattern);
 	}
 	

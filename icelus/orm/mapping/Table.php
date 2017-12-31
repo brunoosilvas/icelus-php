@@ -18,7 +18,6 @@ class Table
 	
 	public function __construct() 
 	{
-		$this->resource = get_class($this);		
-		echo var_dump($this);		
+		
 	}	
 }

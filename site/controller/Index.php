@@ -16,7 +16,10 @@ class Index extends ActionController {
 	public function action($param) {
 				
 		echo "<pre>";		
-		$profissoes = new Profissoes();
+		//$profissoes = new Profissoes();
+
+		$sessionFactory = SessionFactory::instance();
+		$sessionFactory->configu
 		
 		
 		//$this->view->render();
