@@ -12,7 +12,7 @@ namespace icelus\orm\type;
 
 use icelus\orm\type\Generic;
 
-class Boolean extends Generic 
+class IBoolean extends Generic 
 {
 
 	public function __construct($value = null) 

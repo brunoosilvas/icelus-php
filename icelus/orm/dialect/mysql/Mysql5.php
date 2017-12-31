@@ -14,5 +14,13 @@ use icelus\orm\dialect\Dialect;
 
 class Mysql5 implements Dialect
 {
+    public function __construct()
+    {
+        
+    }
 
+    public function sql()
+    {
+        
+    }
 }

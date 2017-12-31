@@ -12,5 +12,5 @@ namespace icelus\orm\dialect;
 
 interface Dialect
 {
-
+    public function sql();
 }

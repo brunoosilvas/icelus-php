@@ -3,8 +3,8 @@
 namespace site\model\dao;
 
 use icelus\orm\model\Entity;
-use icelus\orm\type\Integer;
-use icelus\orm\type\Strings;
+use icelus\orm\type\IInteger;
+use icelus\orm\type\IString;
 
 /**
  * @Table({name : "perfis", schema = "icelus", view = false})
@@ -22,7 +22,7 @@ class Perfis extends Entity
 		return $this->id;
 	}
 	
-	public function setId(\Integer $id) 
+	public function setId(IInteger $id) 
 	{
 		$this->id = $id;
 	}
@@ -30,7 +30,7 @@ class Perfis extends Entity
 	/**
 	 * @Column({"name" : "perfil", "type" : "icelus\\orm\\type\\String", "nullable" : false})
 	 */
-	public function setPerfil(\Strings $perfil)
+	public function setPerfil(IString $perfil)
 	{
 		$this->perfil = $perfil;
 	}

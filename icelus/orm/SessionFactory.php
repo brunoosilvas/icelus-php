@@ -10,16 +10,18 @@
 
 namespace icelus\orm;
 
-use icelus\orm\Session;
 use icelus\util\Files;
+use icelus\orm\Session;
 
 class SessionFactory 
 {
 	
 	private static $instance;
 	private $conf;
-	private $session;	
-	
+	private $dbc;
+	private $session;
+	private $dialect;
+		
 	public static function instance() 
 	{
 		if (self::$instance == NULL)
@@ -46,24 +48,18 @@ class SessionFactory
 			if ($this->session == NULL) 
 			{
 				
-				$dbc = new \PDO($this->conf->persistence->url,
-					$this->conf->persistence->username,
-					$this->conf->persistence->password
+				$this->dbc = new \PDO($this->conf->persistence->url->__toString(),
+					$this->conf->persistence->username->__toString(),
+					$this->conf->persistence->password->__toString()
 				);
 
-				$dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
-				$dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-				
-				/* $this->session = new \PDO(
-					$this->conf->persistence->url,
-					$this->conf->persistence->username,
-					$this->conf->persistence->password
-				);
-				
-				$this->session->setAttribute(\PDO::ATTR_PERSISTENT, false);
-				$this->session->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION); */
+				$this->dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
+				$this->dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-				$this->session = new \Session($dbc, new $this->conf->dialect);
+				$this->dialect = $this->conf->dialect->__toString();
+				$this->dialect = new $this->dialect;
+
+				$this->session = new Session($this->dbc, $this->dialect);
 			}		
 		}
 		catch (\PDOException $e) 
@@ -73,5 +69,15 @@ class SessionFactory
 		
 		return $this->session;		
 	}
+
+	public function getSession()
+	{
+		return $this->session;
+	}
+
+	public function getDialect()
+	{
+		return $this->dialect;
+	} 
 	
 }

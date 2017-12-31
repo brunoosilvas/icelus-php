@@ -12,7 +12,7 @@ namespace icelus\orm\type;
 
 use icelus\orm\type\Generic;
 
-class Date extends Generic 
+class IDate extends Generic 
 {
 
 	private $timezone;		

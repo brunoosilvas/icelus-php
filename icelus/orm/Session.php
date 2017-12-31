@@ -10,7 +10,6 @@
 
 namespace icelus\orm;
 
-use icelus\orm\dialect\mysql;
 use icelus\orm\dialect\Dialect;
 
 class Session
@@ -18,8 +17,28 @@ class Session
     private $dbc;
     private $dialect;
 
-    public function __construct($dbc, \Dialect $dialect) {
+    public function __construct(\PDO $dbc, Dialect $dialect) {
         $this->dbc = $dbc;
-        $this->$dialect = $dialect;
+        $this->dialect = $dialect;
+    }
+
+    public function getDbc()
+    {
+        return $this->dbc;
+    }
+
+    public function setDbc(\PDO $dbc)
+    {
+        $this->dbc = $dbc;
+    }
+
+    public function getDialect()
+    {
+        return $this->dialect;
+    }
+
+    public function setDialect(Dialect $dialect)
+    {
+        $this->dialect = $dialect;
     }
 }

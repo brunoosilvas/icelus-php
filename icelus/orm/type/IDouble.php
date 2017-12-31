@@ -12,7 +12,7 @@ namespace icelus\orm\type;
 
 use Icelus\Orm\Type\Generic;
 
-class Double extends Generic 
+class IDouble extends Generic 
 {
 	
 	public function __construct($value = null) 

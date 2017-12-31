@@ -19,8 +19,12 @@ class Index extends ActionController {
 		//$profissoes = new Profissoes();
 
 		$sessionFactory = SessionFactory::instance();
-		$sessionFactory->configu
-		
+		$sessionFactory->configure("/site/config.mysql")
+			->build();
+
+		echo var_dump($sessionFactory);
+		echo var_dump($sessionFactory->getSession()->getDbc());
+		echo var_dump($sessionFactory->getSession()->getDialect());
 		
 		//$this->view->render();
 	}	

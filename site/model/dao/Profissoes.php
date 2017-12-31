@@ -52,7 +52,7 @@ class Profissoes extends Entity
 		return $this->perfis;
 	}
 
-	public function setPerfis(\Perfis $perfis) 
+	public function setPerfis(Perfis $perfis) 
 	{
 		$this->perfis = $perfis;
 	}

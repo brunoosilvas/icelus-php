@@ -3,8 +3,8 @@
 namespace site\model\dao;
 
 use icelus\orm\model\Entity;
-use icelus\orm\type\Integer;
-use icelus\orm\type\Strings;
+use icelus\orm\type\IInteger;
+use icelus\orm\type\IString;
 
 use site\model\dao\Profissoes;
 
@@ -16,7 +16,7 @@ class Usuarios extends Entity
 	private $senha;
 	private $profissoes;
 
-	public function setId(Integer $id) 
+	public function setId(IInteger $id) 
 	{
 		$this->id = $id;		
 	}
@@ -26,7 +26,7 @@ class Usuarios extends Entity
 		return $this->id;
 	}
 
-	public function setNome(Strings $nome)
+	public function setNome(IString $nome)
 	{
 		$this->nome = $nome;
 	}
