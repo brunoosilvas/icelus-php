@@ -12,7 +12,7 @@ namespace icelus\orm;
 
 use icelus\orm\dialect\Dialect;
 
-class Session
+class Session implements Transaction
 {
     private $dbc;
     private $dialect;
@@ -40,5 +40,25 @@ class Session
     public function setDialect(Dialect $dialect)
     {
         $this->dialect = $dialect;
+    }
+
+    public function begin()
+    {
+        $this->getDbc()->beginTransaction();
+    }
+
+    public function commit()
+    {
+        $this->getDbc()->commit();
+    }
+
+    public function rollback()
+    {
+        $this->getDbc()->rollBack(); 
+    }
+
+    public function close()
+    {
+        $this->setDbc(null);
     }
 }

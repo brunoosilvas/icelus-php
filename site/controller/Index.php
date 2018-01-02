@@ -21,6 +21,9 @@ class Index extends ActionController {
 		$sessionFactory = SessionFactory::instance();
 		$sessionFactory->configure("/site/config.mysql")
 			->build();
+		$sessionFactory->getSession()->begin();
+
+		$sessionFactory->getSession()->commit();
 
 		echo var_dump($sessionFactory);
 		echo var_dump($sessionFactory->getSession()->getDbc());

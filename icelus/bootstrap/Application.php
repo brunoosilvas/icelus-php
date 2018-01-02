@@ -136,6 +136,9 @@ class Application
 	{
 		$this->bufferPageEnd();
 		
+		/**
+		 * verify cookie special char in utf8
+		 */
 		$time = time() + (60 * 60 * 24);
 		setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
 		setcookie("error_type", $exception->getCode(), $time, '/');
