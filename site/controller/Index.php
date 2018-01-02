@@ -18,8 +18,8 @@ class Index extends ActionController {
 		echo "<pre>";		
 		//$profissoes = new Profissoes();
 
-		$sessionFactory = SessionFactory::instance();
-		$sessionFactory->configure("/site/config.mysql")
+		$sessionFactory = SessionFactory::instance()
+			->configure("/site/config.mysql")
 			->build();
 		$sessionFactory->getSession()->begin();
 
