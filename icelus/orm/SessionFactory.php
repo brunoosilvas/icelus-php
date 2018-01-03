@@ -18,9 +18,7 @@ class SessionFactory
 	
 	private static $instance;
 	private $conf;
-	private $dbc;
 	private $session;
-	private $dialect;
 		
 	public static function instance() 
 	{
@@ -48,18 +46,18 @@ class SessionFactory
 			if ($this->session == NULL) 
 			{
 				
-				$this->dbc = new \PDO($this->conf->persistence->url->__toString(),
+				$dbc = new \PDO($this->conf->persistence->url->__toString(),
 					$this->conf->persistence->username->__toString(),
 					$this->conf->persistence->password->__toString()
 				);
 
-				$this->dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
-				$this->dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+				$dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
+				$dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-				$this->dialect = $this->conf->dialect->__toString();
-				$this->dialect = new $this->dialect;
+				$dialect = $this->conf->dialect->__toString();
+				$dialect = new $dialect;
 
-				$this->session = new Session($this->dbc, $this->dialect);
+				$this->session = new Session($dbc, $dialect);
 			}		
 		}
 		catch (\PDOException $e) 
@@ -75,9 +73,4 @@ class SessionFactory
 		return $this->session;
 	}
 
-	public function getDialect()
-	{
-		return $this->dialect;
-	} 
-	
 }

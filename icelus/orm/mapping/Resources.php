@@ -10,14 +10,8 @@
 
 namespace icelus\orm\mapping;
 
-class Column 
+class Resources
 {
-    private $id;
-    private $name;
-    private $sequence;   
-    private $nullable;
-    private $type;
-	
 	public function __construct() 
 	{
 		

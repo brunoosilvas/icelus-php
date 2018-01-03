@@ -19,7 +19,7 @@ class Profissoes extends Entity
 	private $perfis;
 
 	/**
-	 * @Column({"name" : "id", "type" : "icelus\\orm\\type\\Integer", "nullable" : false})
+	 * @Column({"id" : true, "name" : "id", "nullable" : false, "type" : "icelus\\orm\\type\\Integer"})
 	 */
 	public function getId()
 	{
@@ -45,7 +45,7 @@ class Profissoes extends Entity
 	}
 
 	/**
-	 * @Column({"name" : "perfil", "type" : "site\\model\\dao\\Perfis", "nullable" : false, "fk" : true})
+	 * @Foreign({"name" : "perfil", "nullable" : false, "type" : "site\\model\\dao\\Perfis"})
 	 */
 	public function getPerfis()
 	{
