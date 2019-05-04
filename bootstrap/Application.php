@@ -27,8 +27,10 @@ class Application
 	 */
 	public static function environment() 
 	{
-	    if (self::$instance == null)
-			self::$instance = new self();
+			if (self::$instance == null)
+			{
+				self::$instance = new self();
+			}
 		
 		return self::$instance;
 	}
