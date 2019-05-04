@@ -1,5 +1,5 @@
 Options -Indexes
 
 <FilesMatch "\.(htaccess|xml|ini|json)$">
-	Deny from all
+	Require all denied
 </FilesMatch>
