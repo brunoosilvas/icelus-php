@@ -167,9 +167,12 @@ class Application
     
     private function uriError()
     {
-        foreach ($this->conf as $extra => $value) {
+        foreach ($this->conf as $extra => $value) 
+        {
             if ($value["module"] == $_REQUEST["module"])
+            {
                 return $value["error"];
+            }
         }
         
         return "/error";
