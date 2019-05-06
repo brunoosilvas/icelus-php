@@ -12,14 +12,17 @@ namespace icelus\orm\type;
 
 use icelus\orm\type\Generic;
 
-class IBoolean extends Generic 
+class Boolean extends Generic 
 {
 
 	public function __construct($value = null) 
 	{
 		$this->value = null;
-		if ($this->isValid($value))
+
+		if ($this->isValid($value)) 
+		{
 			$this->value = $value;
+		}
 	}
 	
 	public function value() 

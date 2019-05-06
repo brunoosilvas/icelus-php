@@ -12,16 +12,16 @@ namespace icelus\orm\type;
 
 use icelus\orm\type\Generic;
 
-class IString extends Generic 
+class Integer extends Generic 
 {
-		
+			
 	public function __construct($value = null) 
 	{
 		$this->value = null;
 		if ($this->isValid($value))
-			$this->value = $value;
+			$this->value = $value;		
 	}
-	
+
 	public function value() 
 	{
 		return $this->value;
@@ -29,22 +29,6 @@ class IString extends Generic
 	
 	public function isValid($value) 
 	{
-		return is_string($value) ? true : false;
-	}
-	
-	public function compare(Type $type) 
-	{
-		$this->compareIsValid($type);
-		
-		$compare = false;
-		if (strcmp($this->value(), $type->value()) == 0)
-			$compare = true;
-		
-		return $compare;
-	}
-	
-	public function length() 
-	{
-		return strlen($this->value());
+		return is_int($value) ? true : false;
 	}
 }

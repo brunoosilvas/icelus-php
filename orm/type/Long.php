@@ -10,18 +10,20 @@
 
 namespace icelus\orm\type;
 
-use Icelus\Orm\Type\Generic;
+use icelus\orm\type\Generic;
 
-class IDouble extends Generic 
+class Long extends Generic 
 {
-	
+			
 	public function __construct($value = null) 
 	{
 		$this->value = null;
-		if ($this->isValid($value))
-			$this->value = $value;
+        if ($this->isValid($value)) 
+        {
+            $this->value = $value;		
+        }
 	}
-	
+
 	public function value() 
 	{
 		return $this->value;
@@ -29,7 +31,6 @@ class IDouble extends Generic
 	
 	public function isValid($value) 
 	{
-		return is_double($value) ? true : false;
+        return is_long($value) ? true : false;
 	}
-	
 }

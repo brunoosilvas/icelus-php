@@ -15,6 +15,13 @@ use icelus\http\Response;
 
 class Application 
 {
+    private CONST ICELUS = "/icelus/i";
+    private CONST EXTENSION_PHP = ".php";
+    
+    private CONST FOLDER_VENDOR = "vendor";
+    private CONST FOLDER_ERROR = "error";
+
+
     private static $instance;
     
     private $conf;
@@ -88,6 +95,20 @@ class Application
         list($usec, $sec) = explode(' ', microtime());
         $this->timeScriptStart = ((float) $sec + (float) $usec);		
     }
+
+    /**
+     * Time elipsed script execution
+     * 
+     * @return double
+     */
+    public function timeElapsedScriptExecution() 
+    {
+        list($usec, $sec) = explode(' ', microtime());
+        $this->timeScriptEnd = ((float) $sec + (float) $usec);
+        $this->timeScriptElapsed = round($this->timeScriptEnd - $this->timeScriptStart, 4);
+        
+        return $this->timeScriptElapsed;
+    }
     
     /**
      * Register autoload class of application
@@ -107,8 +128,10 @@ class Application
      */
     public function autoloadClass($namespace) 
     {
-        if (!class_exists($namespace) && !interface_exists($namespace))	
+        if (!class_exists($namespace) && !interface_exists($namespace))
+        {
             $this->loadClass($namespace);
+        }
     }	
     
     /**
@@ -121,7 +144,17 @@ class Application
     
     private function loadClass($namespace) 
     {
-        require_once(str_replace("\\", "/", $this->rootDir() . $namespace . ".php"));
+
+        $pathClass = $this->rootDir();
+
+        if (preg_match(Application::ICELUS, $namespace))
+        {
+            $pathClass .= Application::FOLDER_VENDOR . DIRECTORY_SEPARATOR;
+        }
+
+        $pathClass .= $namespace . Application::EXTENSION_PHP;
+
+        require_once(str_replace("\\", "/", $pathClass));
     }
     
     /**
@@ -192,17 +225,4 @@ class Application
         throw new \ErrorException($errorMessage, 0, $errorType, $errorFile, $errorLine);
     }
     
-    /**
-     * Time elipsed script execution
-     * 
-     * @return double
-     */
-    public function timeElapsedScriptExecution() 
-    {
-        list($usec, $sec) = explode(' ', microtime());
-        $this->timeScriptEnd = ((float) $sec + (float) $usec);
-        $this->timeScriptElapsed = round($this->timeScriptEnd - $this->timeScriptStart, 4);
-        
-        return $this->timeScriptElapsed;
-    }
 }
