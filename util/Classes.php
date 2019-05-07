@@ -46,15 +46,17 @@ class Classes
 	 * @param string $normalize
 	 * @return string
 	 */
-	public static function name($normalize) 
+	public static function class($normalize) 
 	{
 		$class = "";
 		$names = explode("-", $normalize);
 		
 		foreach ($names as $name)
+		{
 			$class .= ucfirst($name);		
+		}
 		
-		return (! empty($class) ? $class : $normalize);
+		return (!empty($class) ? $class : $normalize);
 	}
 	
 	/**
@@ -69,12 +71,16 @@ class Classes
 		$names = explode("-", $normalize);
 		
 		$index = 0;
-		foreach ($names as $name) {
+		foreach ($names as $name) 
+		{
 			if ($index == Utils::DEFAULT_INDEX)
+			{
 				$method .= strtolower($name);
+			}
 			else
+			{
 				$method .= ucfirst($name);
-		
+			}		
 			$index++;
 		}	
 		

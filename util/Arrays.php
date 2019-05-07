@@ -18,4 +18,9 @@ class Arrays
 		return array_key_exists($key, $array) ? $array[$key] : null;
 	}
 
+	public static function contains($key, $array)
+	{
+		return array_key_exists($key, $array) ? true : false;
+	}
+
 }

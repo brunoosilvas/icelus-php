@@ -10,22 +10,22 @@
 
 namespace icelus\controller\Route;
 
-use icelus\controller\route\RouteInterface;
+use icelus\controller\route\Route;
 use icelus\controller\FactoryController;
 use icelus\http\Request;
 use icelus\util\Classes;
 use icelus\http\Response;
 
-class RouteImpl implements RouteInterface
+class RouteImpl implements Route
 {	
+	private const CONTROLLER_DEFAULT = "/controller/";
+	private const CONTROLLER_DEFAULT_METHOD = "action";
+	private const CONTROLLER_DEFAULT_VIEW = "/public/views/";
+	
 	private $config;
 	private $factory;
 	private $controller;
 
-	const CONTROLLER_DEFAULT_URI = "/controller/";
-	const CONTROLLER_AJAX_URI = "/controller/Ajax/";
-	const CONTROLLER_SERVICES_URI = "/controller/Service/";
-	
 	public function __construct() 
 	{		
 		$this->config = array(
@@ -37,13 +37,14 @@ class RouteImpl implements RouteInterface
 	}
 	
 	public function intercept() 
-	{
-		
+	{		
 		$this->factory = new FactoryController($this->config["controller"]);
 		$this->controller = $this->factory->instantiate();
 		
 		if ($this->controller instanceof \icelus\controller\ActionController)
+		{
 			$this->controller->buildViewManager($this->config["view"]);	
+		}
 		
 		$this->dispatch();
 	}
@@ -51,31 +52,23 @@ class RouteImpl implements RouteInterface
 	
 	public function dispatch() 
 	{
-		if ($this->controller instanceof \icelus\controller\ServiceController)
-		{
-			if (!$this->controller->hasTokenValid())
-			{
-				Response::fromJson(
-					array("warning" => "Request invalid token.")
-				);		
-				return;
-			}
-				
-		}			
 		$this->factory->execute($this->config["method"], $this->config["param"]);
 	}
 	
 	public function uriController() 
 	{
-		$uri = Request::get("token") != null ? 
-			self::CONTROLLER_SERVICES_URI : (Request::isAjax() ? 
-					self::CONTROLLER_AJAX_URI : self::CONTROLLER_DEFAULT_URI);
-		return Request::get("module") . $uri . Classes::name(Request::get("class"));
+		$class = Request::get("class");
+		$class = Classes::class($class);
+
+		return Request::get("module") . RouteImpl::CONTROLLER_DEFAULT . $class;
 	}	
 	
 	public function methodController() 
 	{
-		return Request::get("method") == null ? "action" : Classes::method(Request::get("method"));
+		$method = Request::get("method");
+		$method = Classes::method($method);
+
+		return Request::get("method") == null ? RouteImpl::CONTROLLER_DEFAULT_METHOD : $method;
 	}
 	
 	public function paramController() 
@@ -85,7 +78,7 @@ class RouteImpl implements RouteInterface
 	
 	public function uriView() 
 	{
-		return Request::get("module") . "/public/views/" . Request::get("class");
+		return Request::get("module") . RouteImpl::CONTROLLER_DEFAULT_VIEW . Request::get("class");
 	}
 	
 }

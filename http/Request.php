@@ -14,12 +14,16 @@ use icelus\util\Arrays;
 
 class Request 
 {
+	private const HEADER_AJAX = "HTTP_X_REQUESTED_WITH";
+
 	private static $instance;
 	
 	public static function instance()
 	{
 		if (self::$instance == null)
+		{
 			self::$instance = new self();
+		}
 	
 		return self::$instance;
 	}
@@ -44,13 +48,7 @@ class Request
 		
 	public static function isAjax()
 	{
-		return (! empty($_SERVER["HTTP_X_REQUESTED_WITH"]) &&
-				(strtolower($_SERVER["HTTP_X_REQUESTED_WITH"]) == "xmlhttprequest"));
-	}
-	
-	public static function redirect($url, $data) 
-	{		
-		header("Location: " . $url . $data);
+		return Arrays::contains(Request::HEADER_AJAX, $_SERVER);
 	}
 	
 }

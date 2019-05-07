@@ -10,7 +10,7 @@
 
 namespace icelus\controller\Route;
 
-interface RouteInterface 
+interface Route 
 {
 
 	public function intercept();

@@ -14,7 +14,6 @@ use icelus\http\Request;
 
 class Response 
 {
-	
 	public static function fromJson($data) {
 		header("Content-Type: application/json");
 		echo json_encode($data); 

@@ -10,8 +10,6 @@
 
 namespace icelus\view\resource;
 
-use icelus\util\Utils;
-
 class Resources 
 {		
 	private static $instance;
@@ -19,7 +17,9 @@ class Resources
 	public static function instance() 
 	{
 		if (self::$instance == null)
+		{
 			self::$instance = new self();
+		}
 		
 		return self::$instance;
 	}
@@ -31,7 +31,7 @@ class Resources
 	
 	public function protocol() 
 	{
-		return strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, 5)) == "https" ? 
-			"https://" : "http://";
+		return strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, 5)) == "https" 
+			? "https://" : "http://";
 	}
 }

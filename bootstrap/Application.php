@@ -50,7 +50,7 @@ class Application
     public function init($conf) 
     {	
         $this->conf = $conf;		
-        $this->registerTimeExecutionOfScript();
+        $this->registerTimeStartExecutionOfScript();
         $this->registerAutoloadClass();
         $this->notifyError();
         
@@ -90,7 +90,7 @@ class Application
      * 
      * @return void
      */
-    private function registerTimeExecutionOfScript() 
+    private function registerTimeStartExecutionOfScript() 
     {
         list($usec, $sec) = explode(' ', microtime());
         $this->timeScriptStart = ((float) $sec + (float) $usec);		
@@ -101,7 +101,7 @@ class Application
      * 
      * @return double
      */
-    public function timeElapsedScriptExecution() 
+    public function timeEndScriptExecution() 
     {
         list($usec, $sec) = explode(' ', microtime());
         $this->timeScriptEnd = ((float) $sec + (float) $usec);
@@ -166,51 +166,7 @@ class Application
     {	
         set_error_handler(array($this, "errorHandler"));
     }
-    
-    public function restoreError(\ErrorException $exception) 
-    {
-        $this->bufferPageEnd();
-        
-        /**
-         * verify cookie special char in utf8
-         */
-        $time = time() + (60 * 60 * 24);
-        setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
-        setcookie("error_type", $exception->getCode(), $time, '/');
-        setcookie("error_message", $exception->getMessage(), $time, '/');
-        setcookie("error_line", $exception->getLine(), $time, '/');
-        setcookie("error_file", $exception->getFile(), $time, '/');
 
-        Request::redirect($this->uriError(), "");
-    }
-    
-    public function restoreFatalError(\Error $error)
-    {
-        $this->bufferPageEnd();
-        
-        $time = time() + (60 * 60 * 24);
-        setcookie("error_date", date('Y-m-d H:i:s'), $time, '/');
-        setcookie("error_type", $error->getCode(), $time, '/');
-        setcookie("error_message", $error->getMessage(), $time, '/');
-        setcookie("error_line", $error->getLine(), $time, '/');
-        setcookie("error_file", $error->getFile(), $time, '/');
-                
-        Request::redirect($this->uriError(), "");
-    }
-    
-    private function uriError()
-    {
-        foreach ($this->conf as $extra => $value) 
-        {
-            if ($value["module"] == $_REQUEST["module"])
-            {
-                return $value["error"];
-            }
-        }
-        
-        return "/error";
-    }
-    
     /**
      * Handler default send error applicaiton
      * 
@@ -223,6 +179,34 @@ class Application
     public function errorHandler($errorType, $errorMessage, $errorFile, $errorLine, $errorContext = null)
     {
         throw new \ErrorException($errorMessage, 0, $errorType, $errorFile, $errorLine);
+    }
+    
+    public function restoreError(\ErrorException $exception) 
+    {
+        if (Request::isAjax()) 
+        {
+            Response::fromJson($exception);
+        }
+        else
+        {
+            $this->bufferPageEnd();
+
+            echo var_dump($exception);
+        }
+    }
+    
+    public function restoreFatalError(\Error $error)
+    {
+        if (Request::isAjax()) 
+        {
+            Response::fromJson($error);
+        }
+        else
+        {
+            $this->bufferPageEnd();
+
+            echo var_dump($error);
+        }
     }
     
 }
