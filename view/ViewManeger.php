@@ -36,7 +36,7 @@ class ViewManeger
     }
 	
     public function render($view = null) 
-	{
+    {
         $template = Application::rootDir() . 
             $this->getUri() . ($view == null ? "/index" : ("/" . $view));
 			
