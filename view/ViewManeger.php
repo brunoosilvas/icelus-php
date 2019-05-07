@@ -19,17 +19,17 @@ class ViewManeger
 {
     private $uri;
     private $view;
-	
+    
     public function __construct($uri) 
     {
-	    $this->uri = $uri;
-	    $this->view = array();
+        $this->uri = $uri;
+        $this->view = array();
     }
-	
+    
     public function add($key, $value) 
-	{
+    {
 	    $this->view[$key] = $value;
-	}
+    }
 	
     public function get($key) {
 	    return Arrays::get($key, $this->view);
