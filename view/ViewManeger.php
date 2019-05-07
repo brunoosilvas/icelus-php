@@ -28,11 +28,11 @@ class ViewManeger
     
     public function add($key, $value) 
     {
-	    $this->view[$key] = $value;
+        $this->view[$key] = $value;
     }
 	
     public function get($key) {
-	    return Arrays::get($key, $this->view);
+        return Arrays::get($key, $this->view);
     }
 	
     public function render($view = null) 
@@ -42,7 +42,7 @@ class ViewManeger
 			
         if (Files::exists($template, Files::EXTENSION_DEFAULT))
         {
-		    require_once $template . Files::EXTENSION_DEFAULT;
+            require_once $template . Files::EXTENSION_DEFAULT;
         }
         else 
         {
