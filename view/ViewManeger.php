@@ -14,11 +14,9 @@ use icelus\bootstrap\Application;
 use icelus\util\Files;
 use icelus\util\Arrays;
 use icelus\view\resource\Resources;
-use icelus\http\Request;
 
 class ViewManeger 
 {
-	
 	private $uri;
 	private $view;
 	
@@ -44,9 +42,13 @@ class ViewManeger
 			($view == null ? "/index" : ("/" . $view));
 			
 		if (Files::exists($template, Files::EXTENSION_DEFAULT))
+		{
 			require_once $template . Files::EXTENSION_DEFAULT;
+		}
 		else 
+		{
 			throw new \ErrorException(sprintf("View not found in '%s'", $template));		
+		}
 	}
 
 	public function resources()
