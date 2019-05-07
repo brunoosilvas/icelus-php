@@ -13,10 +13,10 @@ namespace icelus\util;
 class Files 
 {
 
-    private const UPLOAD_MAX_FILE_SIZE = 10;
-	private const EXTENSION_DEFAULT = ".php";
-	private const EXTENSION_XML = ".xml";
-	private const EXTENSION_JSON = ".json";
+    const UPLOAD_MAX_FILE_SIZE = 10;
+	const EXTENSION_DEFAULT = ".php";
+	const EXTENSION_XML = ".xml";
+	const EXTENSION_JSON = ".json";
 	
     public static function exists($path, $extension = null) 
 	{

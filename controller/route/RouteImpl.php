@@ -18,9 +18,9 @@ use icelus\http\Response;
 
 class RouteImpl implements Route
 {	
-	private const CONTROLLER_DEFAULT = "/controller/";
-	private const CONTROLLER_DEFAULT_METHOD = "action";
-	private const CONTROLLER_DEFAULT_VIEW = "/public/views/";
+	const CONTROLLER_DEFAULT = "/controller/";
+	const CONTROLLER_DEFAULT_METHOD = "action";
+	const CONTROLLER_DEFAULT_VIEW = "/public/views/";
 	
 	private $config;
 	private $factory;

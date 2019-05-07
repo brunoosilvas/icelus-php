@@ -14,7 +14,7 @@ use icelus\util\Arrays;
 
 class Request 
 {
-	private const HEADER_AJAX = "HTTP_X_REQUESTED_WITH";
+	const HEADER_AJAX = "HTTP_X_REQUESTED_WITH";
 
 	private static $instance;
 	

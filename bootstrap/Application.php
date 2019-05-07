@@ -15,12 +15,10 @@ use icelus\http\Response;
 
 class Application 
 {
-    private CONST ICELUS = "/icelus/i";
-    private CONST EXTENSION_PHP = ".php";
-    
-    private CONST FOLDER_VENDOR = "vendor";
-    private CONST FOLDER_ERROR = "error";
-
+    const ICELUS = "/icelus/i";
+    const EXTENSION_PHP = ".php";
+    const FOLDER_VENDOR = "vendor";
+    const FOLDER_ERROR = "error";
 
     private static $instance;
     
