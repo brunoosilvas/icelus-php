@@ -162,47 +162,30 @@ class Application
      */
     private function notifyError() 
     {	
-        set_error_handler(array($this, "errorHandler"));
+        register_shutdown_function(array($this, "errorHandler"));
     }
 
-    /**
-     * Handler default send error applicaiton
-     * 
-     * @param integer $error
-     * @param string $message
-     * @param string $file
-     * @param string $errLine
-     * @throws \ErrorException
-     */
-    public function errorHandler($errorType, $errorMessage, $errorFile, $errorLine, $errorContext = null)
+    public function errorHandler()
     {
-        throw new \ErrorException($errorMessage, 0, $errorType, $errorFile, $errorLine);
+        $error = error_get_last();
+        
+        if ($error)
+        {
+            $this->restoreError($error);
+        }
+        
     }
     
-    public function restoreError(\ErrorException $exception) 
+    public function restoreError($error) 
     {
-        if (Request::isAjax()) 
-        {
-            Response::fromJson($exception);
-        }
-        else
-        {
-            $this->bufferPageEnd();
+        $this->bufferPageEnd();
 
-            echo var_dump($exception);
-        }
-    }
-    
-    public function restoreFatalError(\Error $error)
-    {
         if (Request::isAjax()) 
         {
             Response::fromJson($error);
         }
         else
         {
-            $this->bufferPageEnd();
-
             echo var_dump($error);
         }
     }

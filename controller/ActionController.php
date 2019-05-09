@@ -14,7 +14,6 @@ use icelus\view\ViewManeger;
 
 abstract class ActionController 
 {
-
 	protected $view;	
 		
 	abstract public function action($param);
@@ -24,6 +23,5 @@ abstract class ActionController
 	public function buildViewManager($uri) 
 	{
 		$this->view = new ViewManeger($uri);
-	}
-	
+	}	
 }

@@ -38,12 +38,15 @@ class RouteImpl implements Route
 	
 	public function intercept() 
 	{		
-		$this->factory = new FactoryController($this->config["controller"]);
+        $controller = $this->config["controller"];
+
+		$this->factory = new FactoryController($controller);
 		$this->controller = $this->factory->instantiate();
 		
 		if ($this->controller instanceof \icelus\controller\ActionController)
 		{
-			$this->controller->buildViewManager($this->config["view"]);	
+            $view = $this->config["view"];
+			$this->controller->buildViewManager($view);	
 		}
 		
 		$this->dispatch();
