@@ -11,8 +11,7 @@
 namespace icelus\util;
 
 class Utils 
-{
-	
+{	
     const DEFAULT_INDEX = 0;	
 	
  	public static function convertToNamespace($uri) 

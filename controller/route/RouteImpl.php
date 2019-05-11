@@ -14,13 +14,12 @@ use icelus\controller\route\Route;
 use icelus\controller\FactoryController;
 use icelus\http\Request;
 use icelus\util\Classes;
-use icelus\http\Response;
 
 class RouteImpl implements Route
 {	
-	const CONTROLLER_DEFAULT = "/controller/";
-	const CONTROLLER_DEFAULT_METHOD = "action";
-	const CONTROLLER_DEFAULT_VIEW = "/public/views/";
+	const CONTROLLER_PATH = "/controller/";
+    const CONTROLLER_PATH_VIEW = "/public/view/";
+    const CONTROLLER_METHOD = "action";
 	
 	private $config;
 	private $factory;
@@ -29,10 +28,11 @@ class RouteImpl implements Route
 	public function __construct() 
 	{		
 		$this->config = array(
-			"controller" => $this->uriController(),
-			"method" => $this->methodController(),
-			"param" => $this->paramController(),
-			"view" => $this->uriView()
+            "module" => $this->module(),
+			"controller" => $this->controller(),
+			"method" => $this->method(),
+			"param" => $this->param(),
+			"view" => $this->view()
 		);
 	}
 	
@@ -46,42 +46,61 @@ class RouteImpl implements Route
 		if ($this->controller instanceof \icelus\controller\ActionController)
 		{
             $view = $this->config["view"];
-			$this->controller->buildViewManager($view);	
+ 			$this->controller->buildViewManager($view);	
 		}
 		
 		$this->dispatch();
 	}
-	
+    
+    private function scanControllers()
+    {
+
+    }
 	
 	public function dispatch() 
 	{
 		$this->factory->execute($this->config["method"], $this->config["param"]);
-	}
+    }
+    
+    private function module()
+    {
+        $module = Request::get("module");
+        return $module;
+    }
 	
-	public function uriController() 
+	private function controller() 
 	{
+        $module = $this->module();
 		$class = Request::get("class");
-		$class = Classes::class($class);
+        $class = Classes::class($class);
+        
+        $controller = $module . RouteImpl::CONTROLLER_PATH . $class;
 
-		return Request::get("module") . RouteImpl::CONTROLLER_DEFAULT . $class;
+		return $controller;
 	}	
 	
-	public function methodController() 
+	private function method() 
 	{
 		$method = Request::get("method");
 		$method = Classes::method($method);
 
-		return Request::get("method") == null ? RouteImpl::CONTROLLER_DEFAULT_METHOD : $method;
+		return $method == null ? RouteImpl::CONTROLLER_METHOD : $method;
 	}
 	
-	public function paramController() 
+	private function param() 
 	{
-		return Request::get("param");
+        $param = Request::get("param");
+		return $param;
 	}
 	
-	public function uriView() 
+	private function view() 
 	{
-		return Request::get("module") . RouteImpl::CONTROLLER_DEFAULT_VIEW . Request::get("class");
+        $module = $this->module();
+        $class = Request::get("class");
+
+        $view = $module . RouteImpl::CONTROLLER_PATH_VIEW . $class;
+
+		return  $view;
 	}
 	
 }

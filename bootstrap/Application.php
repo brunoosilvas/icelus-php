@@ -16,7 +16,7 @@ use icelus\http\Response;
 class Application 
 {
     const ICELUS = "/icelus/i";
-    const EXTENSION_PHP = ".php";
+    const EXTENSION_DEFAULT = ".php";
     const FOLDER_VENDOR = "vendor";
     const FOLDER_ERROR = "error";
 
@@ -48,7 +48,7 @@ class Application
     public function init($conf) 
     {	
         $this->conf = $conf;		
-        $this->registerTimeStartExecutionOfScript();
+        $this->registerTimeStartScript();
         $this->registerAutoloadClass();
         $this->notifyError();
         
@@ -88,7 +88,7 @@ class Application
      * 
      * @return void
      */
-    private function registerTimeStartExecutionOfScript() 
+    private function registerTimeStartScript() 
     {
         list($usec, $sec) = explode(' ', microtime());
         $this->timeScriptStart = ((float) $sec + (float) $usec);		
@@ -99,7 +99,7 @@ class Application
      * 
      * @return double
      */
-    public function timeEndScriptExecution() 
+    public function registerTimeEndScript() 
     {
         list($usec, $sec) = explode(' ', microtime());
         $this->timeScriptEnd = ((float) $sec + (float) $usec);
@@ -150,9 +150,10 @@ class Application
             $pathClass .= Application::FOLDER_VENDOR . DIRECTORY_SEPARATOR;
         }
 
-        $pathClass .= $namespace . Application::EXTENSION_PHP;
+        $pathClass .= $namespace . Application::EXTENSION_DEFAULT;
+        $pathClass = str_replace("\\", "/", $pathClass);
 
-        require_once(str_replace("\\", "/", $pathClass));
+        require_once($pathClass);
     }
     
     /**
@@ -186,6 +187,7 @@ class Application
         }
         else
         {
+            echo "<pre>";
             echo var_dump($error);
         }
     }
