@@ -18,11 +18,10 @@ class Application
     const ICELUS = "/icelus/i";
     const EXTENSION_DEFAULT = ".php";
     const FOLDER_VENDOR = "vendor";
-    const FOLDER_ERROR = "error";
-
+    
     private static $instance;
     
-    private $conf;
+    private $config;
     private $timeScriptStart;
     private $timeScriptEnd;
     private $timeScriptElapsed;	
@@ -45,9 +44,9 @@ class Application
      * 
      * @return void
      */
-    public function init($conf) 
+    public function init($config) 
     {	
-        $this->conf = $conf;		
+        $this->config = $config;		
         $this->registerTimeStartScript();
         $this->registerAutoloadClass();
         $this->notifyError();
@@ -135,25 +134,22 @@ class Application
     /**
      * Include class of application
      * 
-     * @param string $path 
-     * @param string $className 
+     * @param string $namespace 
      * @return void
-     */
-    
+     */    
     private function loadClass($namespace) 
     {
-
-        $pathClass = $this->rootDir();
+        $class = $this->rootDir();
 
         if (preg_match(Application::ICELUS, $namespace))
         {
-            $pathClass .= Application::FOLDER_VENDOR . DIRECTORY_SEPARATOR;
+            $class .= Application::FOLDER_VENDOR . DIRECTORY_SEPARATOR;
         }
 
-        $pathClass .= $namespace . Application::EXTENSION_DEFAULT;
-        $pathClass = str_replace("\\", "/", $pathClass);
+        $class .= $namespace . Application::EXTENSION_DEFAULT;
+        $class = str_replace("\\", "/", $class);
 
-        require_once($pathClass);
+        require_once($class);
     }
     
     /**
