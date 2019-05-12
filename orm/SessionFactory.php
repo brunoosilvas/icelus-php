@@ -14,10 +14,9 @@ use icelus\util\Files;
 use icelus\orm\Session;
 
 class SessionFactory 
-{
-	
+{	
 	private static $instance;
-	private $conf;
+	private $config;
 	private $session;
 		
 	public static function instance() 
@@ -32,40 +31,41 @@ class SessionFactory
 	
 	public function configure($uri) 
 	{
-		$this->conf = Files::xmlLoad($uri);
+		$this->config = Files::xmlLoad($uri);
 		return $this;
 	}
 
-	public function getConf()
+	public function getConfig()
 	{
-		return $this->conf;
+		return $this->config;
 	}
 	
 	public function build() 
 	{		
-		try 
-		{
-			if ($this->session == NULL) 
-			{
-				
-				$dbc = new \PDO($this->conf->persistence->url->__toString(),
-					$this->conf->persistence->username->__toString(),
-					$this->conf->persistence->password->__toString()
-				);
+        try 
+        {
+            if ($this->session == NULL) 
+            {
+                $persistence = $this->config->persistence;
 
-				$dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
-				$dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                $url = $persistence->url->__toString();
+                $username = $persistence->username->__toString();
+                $password = $persistence->password->__toString();
 
-				$dialect = $this->conf->dialect->__toString();
-				$dialect = new $dialect;
+                $dbc = new \PDO($url, $username, $password);
+                $dbc->setAttribute(\PDO::ATTR_PERSISTENT, false);
+                $dbc->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
-				$this->session = new Session($dbc, $dialect);
-			}		
-		}
-		catch (\PDOException $e) 
-		{
-			throw new \ErrorException($e->getMessage(), $e->getCode(), 0, $e->getFile(), $e->getLine());
-		}
+                $dialect = $this->config->dialect->__toString();
+                $dialect = new $dialect;
+
+                $this->session = new Session($dbc, $dialect);
+            }
+        } 
+        catch(\PDOException $e) 
+        {
+            throw new \ErrorException($e->getMessage(), $e->getCode(), 0, $e->getFile(), $e->getLine());
+        }
 
 		return $this;
 	}
@@ -74,5 +74,4 @@ class SessionFactory
 	{
 		return $this->session;
 	}
-
 }

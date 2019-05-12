@@ -18,8 +18,6 @@ abstract class ActionController
 		
 	abstract public function action($param);
 	
-	abstract public function hasSession();
-	
 	public function buildViewManager($uri) 
 	{
 		$this->view = new ViewManeger($uri);

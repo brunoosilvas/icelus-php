@@ -71,7 +71,12 @@ class Application
      */
     public function bufferPageEnd()
     {
-        ob_end_clean();
+        //echo var_dump(ob_get_status());
+        //flush();
+        if (ob_get_status())
+        {
+            ob_end_clean();
+        }
     }
     
     /**
@@ -162,6 +167,11 @@ class Application
         register_shutdown_function(array($this, "errorHandler"));
     }
 
+    private function clearError()
+    {
+        error_clear_last();
+    }
+
     public function errorHandler()
     {
         $error = error_get_last();
@@ -169,12 +179,12 @@ class Application
         if ($error)
         {
             $this->restoreError($error);
-        }
-        
+        }        
     }
     
     public function restoreError($error) 
     {
+        $this->clearError();
         $this->bufferPageEnd();
 
         if (Request::isAjax()) 
