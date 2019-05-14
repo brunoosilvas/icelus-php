@@ -14,37 +14,37 @@ use icelus\util\Files;
 use icelus\orm\Session;
 
 class SessionFactory 
-{	
-	private static $instance;
-	private $config;
-	private $session;
+{
+    private static $instance;
+    private $config;
+    private $session;
 		
-	public static function instance() 
-	{
-        if (self::$instance == NULL)
+    public static function instance() 
+    {
+        if (self::$instance == null)
         {
             self::$instance = new self();
         }
-	
-		return self::$instance;
-	}
-	
-	public function configure($uri) 
-	{
-		$this->config = Files::xmlLoad($uri);
-		return $this;
-	}
 
-	public function getConfig()
-	{
-		return $this->config;
-	}
+        return self::$instance;
+    }
 	
-	public function build() 
-	{		
+    public function configure($uri) 
+    {
+        $this->config = Files::xmlLoad($uri);
+        return $this;
+    }
+
+    public function getConfig()
+    {
+        return $this->config;
+    }
+	
+    public function build() 
+    {		
         try 
         {
-            if ($this->session == NULL) 
+            if ($this->session == null) 
             {
                 $persistence = $this->config->persistence;
 
@@ -67,11 +67,11 @@ class SessionFactory
             throw new \ErrorException($e->getMessage(), $e->getCode(), 0, $e->getFile(), $e->getLine());
         }
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getSession()
-	{
-		return $this->session;
-	}
+    public function getSession()
+    {
+        return $this->session;
+    }
 }
