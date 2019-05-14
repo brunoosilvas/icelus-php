@@ -17,24 +17,24 @@ use icelus\util\Classes;
 
 class RouteImpl implements Route
 {	
-	const CONTROLLER_PATH = "/controller/";
+    const CONTROLLER_PATH = "/controller/";
     const CONTROLLER_PATH_VIEW = "/public/view/";
     const CONTROLLER_METHOD = "action";
 	
-	private $config;
-	private $factory;
-	private $controller;
+    private $config;
+    private $factory;
+    private $controller;
 
-	public function __construct() 
-	{		
-		$this->config = array(
+    public function __construct() 
+    {		
+	    $this->config = array(
             "module" => $this->module(),
-			"controller" => $this->controller(),
-			"method" => $this->method(),
-			"param" => $this->param(),
-			"view" => $this->view()
-		);
-	}
+		    "controller" => $this->controller(),
+		    "method" => $this->method(),
+		    "param" => $this->param(),
+		    "view" => $this->view()
+        );
+    }
 	
 	public function intercept() 
 	{		
