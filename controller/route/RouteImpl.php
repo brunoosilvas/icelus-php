@@ -99,5 +99,5 @@ class RouteImpl implements Route
         $view = $module . RouteImpl::CONTROLLER_PATH_VIEW . $class;
 
         return  $view;
-    }
+    }    
 }
