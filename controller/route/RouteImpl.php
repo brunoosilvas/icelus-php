@@ -35,30 +35,29 @@ class RouteImpl implements Route
         );
     }
 	
-	public function intercept() 
-	{		
+    public function intercept() 
+    {		
         $controller = $this->config["controller"];
 
-		$this->factory = new FactoryController($controller);
-		$this->controller = $this->factory->instantiate();
+        $this->factory = new FactoryController($controller);
+        $this->controller = $this->factory->instantiate();
 		
-		if ($this->controller instanceof \icelus\controller\ActionController)
-		{
+        if ($this->controller instanceof \icelus\controller\ActionController)
+        {
             $view = $this->config["view"];
- 			$this->controller->buildViewManager($view);	
-		}
+            $this->controller->buildViewManager($view);	
+        }
 		
-		$this->dispatch();
-	}
+        $this->dispatch();
+    }
     
     private function scanControllers()
     {
-
     }
 	
-	public function dispatch() 
-	{
-		$this->factory->execute($this->config["method"], $this->config["param"]);
+    public function dispatch() 
+    {
+        $this->factory->execute($this->config["method"], $this->config["param"]);
     }
     
     private function module()
@@ -67,39 +66,38 @@ class RouteImpl implements Route
         return $module;
     }
 	
-	private function controller() 
-	{
+    private function controller() 
+    {
         $module = $this->module();
-		$class = Request::get("class");
+        $class = Request::get("class");
         $class = Classes::class($class);
-        
+
         $controller = $module . RouteImpl::CONTROLLER_PATH . $class;
 
-		return $controller;
-	}	
+        return $controller;
+    }	
 	
-	private function method() 
-	{
-		$method = Request::get("method");
-		$method = Classes::method($method);
+    private function method() 
+    {
+        $method = Request::get("method");
+        $method = Classes::method($method);
 
-		return $method == null ? RouteImpl::CONTROLLER_METHOD : $method;
-	}
+        return $method == null ? RouteImpl::CONTROLLER_METHOD : $method;
+    }
 	
-	private function param() 
-	{
+    private function param() 
+    {
         $param = Request::get("param");
-		return $param;
-	}
-	
-	private function view() 
-	{
+        return $param;
+    }
+
+    private function view() 
+    {
         $module = $this->module();
         $class = Request::get("class");
 
         $view = $module . RouteImpl::CONTROLLER_PATH_VIEW . $class;
 
-		return  $view;
-	}
-	
+        return  $view;
+    }
 }
