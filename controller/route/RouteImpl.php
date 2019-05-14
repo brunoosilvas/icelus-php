@@ -27,12 +27,11 @@ class RouteImpl implements Route
 
     public function __construct() 
     {		
-	    $this->config = array(
-            "module" => $this->module(),
-		    "controller" => $this->controller(),
-		    "method" => $this->method(),
-		    "param" => $this->param(),
-		    "view" => $this->view()
+        $this->config = array("module" => $this->module(),
+            "controller" => $this->controller(),
+            "method" => $this->method(),
+            "param" => $this->param(),
+            "view" => $this->view()
         );
     }
 	
