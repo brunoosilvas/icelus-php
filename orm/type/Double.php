@@ -14,25 +14,23 @@ use Icelus\Orm\Type\Generic;
 
 class Double extends Generic 
 {
-	
-	public function __construct($value = null) 
-	{
-		$this->value = null;
+    public function __construct($value = null)
+    {
+        $this->value = null;
 
-		if ($this->isValid($value)) 
-		{
-			$this->value = $value;
-		}
-	}
-	
-	public function value() 
-	{
-		return $this->value;
-	}
-	
-	public function isValid($value) 
-	{
-		return is_double($value) ? true : false;
-	}
-	
+        if ($this->isValid($value)) 
+        {
+            $this->value = $value;
+        }
+    }
+    
+    public function value()
+    {
+        return $this->value;
+    }
+
+    public function isValid($value)
+    {
+        return is_double($value) ? true : false;
+    }
 }
