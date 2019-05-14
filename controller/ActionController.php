@@ -14,12 +14,12 @@ use icelus\view\ViewManeger;
 
 abstract class ActionController 
 {
-	protected $view;	
-		
-	abstract public function action($param);
+    protected $view;	
+
+    abstract public function action($param);
 	
-	public function buildViewManager($uri) 
-	{
-		$this->view = new ViewManeger($uri);
-	}	
+    public function buildViewManager($uri) 
+    {
+        $this->view = new ViewManeger($uri);
+    }	
 }
