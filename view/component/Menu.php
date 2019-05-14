@@ -10,21 +10,21 @@
 
 namespace icelus\view\component;
 
-class Menu {
-	
-	private $itens;
+class Menu 
+{
+    private $itens;
+    
+    public function __construct()
+    {
+        $this->itens = array();
+    }
+    public function add(MenuItem $item)
+    {
+        array_push($this->itens, $item);
+    }
 
-	public function __construct() {
-		$this->itens = array();	
-	}
-	
-	public function add(MenuItem $item) {
-		array_push($this->itens, $item);		
-	}
-	
-	public function itens() {
-		return $this->itens;
-	}
-
-	
+    public function itens()
+    {
+        return $this->itens;
+    }
 }

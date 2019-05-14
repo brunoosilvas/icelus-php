@@ -11,13 +11,13 @@
 namespace icelus\view\component;
 
 class MenuItem {
-
-	private $menu;
-	private $text;
-	
-	public function __construct($text, Menu $menu = NULL) {
-		$this->text = $text;
-		$this->menu = $menu;	
-	}
-	
+    
+    private $menu;
+    private $text;
+    
+    public function __construct($text, Menu $menu = null)
+    {
+        $this->text = $text;
+        $this->menu = $menu;
+    }
 }

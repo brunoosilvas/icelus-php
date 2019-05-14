@@ -10,6 +10,6 @@
 
 namespace icelus\view\component;
 
-class MenuBuilder {
-	
+class MenuBuilder
+{	
 }

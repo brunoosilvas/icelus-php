@@ -11,27 +11,29 @@
 namespace icelus\view\resource;
 
 class Resources 
-{		
-	private static $instance;
+{
+    private static $instance;
+    
+    public static function instance()
+    {
+        if (self::$instance == null)
+        {
+            self::$instance = new self();
+        }
+        
+        return self::$instance;
+    }
+    
+    public function rootLink()
+    {
+        return $this->protocol() . $_SERVER["SERVER_NAME"];
+    }
+    
+    public function protocol()
+    {
+        $protocol = strtolower($_SERVER["SERVER_PROTOCOL"]);
+        $protocol = substr($protocol, 0, 5) == "https" ? "https://" : "http://";
 
-	public static function instance() 
-	{
-		if (self::$instance == null)
-		{
-			self::$instance = new self();
-		}
-		
-		return self::$instance;
-	}
-	
-	public function rootLink() 
-	{
-		return $this->protocol() . $_SERVER["SERVER_NAME"];
-	}
-	
-	public function protocol() 
-	{
-		return strtolower(substr($_SERVER["SERVER_PROTOCOL"], 0, 5)) == "https" 
-			? "https://" : "http://";
-	}
+        return $protocol;
+    }
 }
