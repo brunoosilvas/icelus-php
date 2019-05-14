@@ -11,8 +11,6 @@
 namespace icelus\orm\type;
 
 interface Type 
-{		
-	
-	public function compare(Type $type);
-	
+{
+    public function compare(Type $type);
 }

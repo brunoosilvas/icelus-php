@@ -14,21 +14,23 @@ use icelus\orm\type\Generic;
 
 class Integer extends Generic 
 {
-			
-	public function __construct($value = null) 
-	{
-		$this->value = null;
-		if ($this->isValid($value))
-			$this->value = $value;		
-	}
+    public function __construct($value = null)
+    {
+        $this->value = null;
 
-	public function value() 
-	{
-		return $this->value;
-	}
-	
-	public function isValid($value) 
-	{
-		return is_int($value) ? true : false;
-	}
+        if ($this->isValid($value))
+        {
+            $this->value = $value;		
+        }
+    }
+    
+    public function value()
+    {
+        return $this->value;
+    }
+
+    public function isValid($value)
+    {
+        return is_int($value) ? true : false;
+    }
 }
