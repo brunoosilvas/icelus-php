@@ -37,15 +37,17 @@ class FactoryController
     } 
 	
     public function execute($method, $param) 
-    {		
-        $reflection = new \ReflectionClass($this->controller);
+    {	
+        $controller = $this->controller;	
+        $reflection = new \ReflectionClass($controller);
         
         if (!$reflection->hasMethod($method))
         {
-            throw new \ErrorException(sprintf("Method '%s' in controller '%s' is missing.", $method, $this->uri));
+            $uri = $this->uri;
+            throw new \ErrorException(sprintf("Method '%s' in controller '%s' is missing.", $method, $uri));
         }
         
         $method = $reflection->getMethod($method);
-        $method->invoke($this->controller, $param);
+        $method->invoke($controller, $param);
     }
 }
