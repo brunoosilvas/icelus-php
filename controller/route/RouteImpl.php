@@ -50,14 +50,12 @@ class RouteImpl implements Route
 		
         $this->dispatch();
     }
-    
-    private function scanControllers()
-    {
-    }
-	
+
     public function dispatch() 
     {
-        $this->factory->execute($this->config["method"], $this->config["param"]);
+        $method = $this->config["method"];
+        $param = $this->config["param"];
+        $this->factory->execute($method, $param);
     }
     
     private function module()
@@ -72,7 +70,9 @@ class RouteImpl implements Route
         $class = Request::get("class");
         $class = Classes::class($class);
 
-        $controller = $module . RouteImpl::CONTROLLER_PATH . $class;
+        $controller = $module;
+        $controller .= RouteImpl::CONTROLLER_PATH;
+        $controller .= $class;
 
         return $controller;
     }	
@@ -96,7 +96,9 @@ class RouteImpl implements Route
         $module = $this->module();
         $class = Request::get("class");
 
-        $view = $module . RouteImpl::CONTROLLER_PATH_VIEW . $class;
+        $view = $module;
+        $view .= RouteImpl::CONTROLLER_PATH_VIEW;
+        $view .= $class;
 
         return  $view;
     }    
