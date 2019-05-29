@@ -10,7 +10,9 @@
 
 namespace icelus\orm\mapping;
 
-class Column 
+use icelus\util\Naming;
+
+class Column implements Naming
 {
     private $id;
     private $name;
@@ -21,5 +23,10 @@ class Column
 	public function __construct() 
 	{
 		
-	}	
+    }
+    
+    public static function class()
+    {
+        return __CLASS__;
+    }
 }

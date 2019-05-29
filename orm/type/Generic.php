@@ -10,6 +10,8 @@
 
 namespace icelus\orm\type;
 
+use icelus\orm\type\Type;
+
 abstract class Generic implements Type 
 {
     protected $value;

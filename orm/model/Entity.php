@@ -13,6 +13,7 @@ namespace icelus\orm\model;
 use icelus\orm\model\dao\Dao;
 use icelus\orm\mapping\Table;
 use icelus\util\Classes;
+use icelus\orm\mapping\Column;
 
 class Entity
 {
@@ -56,22 +57,25 @@ class Entity
                 $result = substr($string, 
                     $first, ($last - $first));
 
-                echo var_dump($result);
+                //echo var_dump($result);
 
                 $first = strrpos($string, "{");
                 $last = strrpos($string, ")");
                 
-                echo var_dump($first);
-                echo var_dump($last);
-                echo var_dump(strlen($string));
+                //echo var_dump($first);
+                //echo var_dump($last);
+                //echo var_dump(strlen($string));
 
                 $result2 = substr($string, 
                     $first, ($last - $first));
 
-                 echo var_dump($result2);
+                 //echo var_dump($result2);
 
-                 var_dump(json_decode($result2));
+                 //var_dump();
+                 $object = json_decode($result2);
 
+                 $temp = Classes::castFrom($object, Column::class());
+                 echo var_dump($temp);
             }
         }
 
