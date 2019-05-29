@@ -85,12 +85,12 @@ class Classes
         return (!empty($method) ? $method : $normalize);
     }
 
-    public static function castFrom(\stdClass $base, $class)
+    public static function castFrom(\stdClass $object, $class)
     {
         $class = new \ReflectionClass($class);
         $instance = $class->newInstance();
 
-        foreach($base as $key => $value)
+        foreach($object as $key => $value)
         {
             $property = $class->getProperty($key);
             $property->setAccessible(true);
