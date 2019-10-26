@@ -27,7 +27,7 @@ class FactoryController
     {		
         if (!Files::exists($this->uri, null))
         {
-            throw new \ErrorException(sprintf("Controller not found in path '%s'", $this->uri));
+            throw new \ErrorException(sprintf("Controller not found in path \"%s\"", $this->uri));
         }
 
         $this->controller = Utils::convertToNamespace($this->uri);
