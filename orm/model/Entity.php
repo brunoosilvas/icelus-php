@@ -57,7 +57,7 @@ class Entity
                 $result = substr($string, 
                     $first, ($last - $first));
 
-                //echo var_dump($result);
+                echo var_dump($result);
 
                 $first = strrpos($string, "{");
                 $last = strrpos($string, ")");
@@ -69,7 +69,7 @@ class Entity
                 $result2 = substr($string, 
                     $first, ($last - $first));
 
-                 //echo var_dump($result2);
+                 echo var_dump($result2);
 
                  //var_dump();
                  $object = json_decode($result2);

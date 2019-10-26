@@ -50,6 +50,7 @@ class Strings extends Generic
     
     public function length()
     {
-        return strlen($this->value());
+        $length = strlen($this->value());
+        return $length;
     }
 }
