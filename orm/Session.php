@@ -59,6 +59,11 @@ class Session implements Transaction
 
     public function close()
     {
-        $this->setDbc(null);
+        if ($this->getDbc()->inTransaction())
+        {
+            $this->rollback();
+        }
+        
+        $this->dbc = null;
     }
 }

@@ -8,11 +8,9 @@
  *
  */
 
-namespace icelus\orm\mapping;
+namespace icelus\orm\annotation;
 
-use icelus\util\Naming;
-
-class Column implements Naming
+class Column
 {
     private $id;
     private $name;
@@ -25,8 +23,4 @@ class Column implements Naming
 		
     }
     
-    public static function class()
-    {
-        return __CLASS__;
-    }
 }

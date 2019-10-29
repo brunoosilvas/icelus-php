@@ -8,9 +8,9 @@
  *
  */
 
-namespace icelus\orm\mapping;
+namespace icelus\orm\annotation;
 
-class Foreign 
+class Resources
 {
 	public function __construct() 
 	{

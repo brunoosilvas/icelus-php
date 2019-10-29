@@ -10,7 +10,7 @@ use icelus\orm\model\dao\Dao;
 use icelus\orm\model\Entity;
 use icelus\orm\Sesssion;
 
-class Repository implements Dao
+class Repository
 {
     private $session;
     private $entity;

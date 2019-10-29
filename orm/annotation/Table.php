@@ -8,7 +8,7 @@
  *
  */
 
-namespace icelus\orm\mapping;
+namespace icelus\orm\annotation;
 
 class Table
 {
