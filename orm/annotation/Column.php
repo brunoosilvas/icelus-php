@@ -17,7 +17,7 @@ class Column
     private $sequence;   
     private $nullable;
     private $type;
-	
+    
 	public function __construct() 
 	{
 		

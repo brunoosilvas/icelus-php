@@ -13,43 +13,43 @@ namespace icelus\util;
 class Annotation 
 {
     const CHAR_SPLIT = "@";
-    const CHAR_START_JSON = "{";
-    const CHAR_END_JSON = "}";
+    const CHAR_JSON_START = "{";
+    const CHAR_JSON_END = "}";
+    const CHAR_END = ";";
     const CHAR_EMPTY = "";
     
-    public static function getClass(\ReflectionMethod $method)
+    public static function getInstance(\ReflectionMethod $method)
     {   
         $class = new \stdClass();
 
         if ($method->getDocComment())
         {   
-            $instance = self::extractClass($method->getDocComment());
-            $data = self::extractData($method->getDocComment());
+            $instance = self::getClass($method->getDocComment());
+            $data = self::getData($method->getDocComment());
 
             $class = json_decode($data);
             $class->instance = $instance;            
         }
-
-        echo var_dump($class);
-
+        
         return $class;
     }
 
-    private static function extractClass(string $docComment) : string
+    private static function getClass(string $docComment) : string
     {
         $first = strpos($docComment, Annotation::CHAR_SPLIT);
-        $last = strpos($docComment, Annotation::CHAR_START_JSON, $first);
+        $last = strpos($docComment, Annotation::CHAR_JSON_START, $first);
         
         $class = substr($docComment, $first, ($last - $first));
         $class = str_replace(Annotation::CHAR_SPLIT, Annotation::CHAR_EMPTY, $class);
+        $class = trim($class);
 
         return $class;
     }
 
-    private static function extractData(string $docDocument) : string 
+    private static function getData(string $docDocument) : string 
     {
-        $first = strpos($docDocument, Annotation::CHAR_START_JSON);
-        $last = strpos($docDocument, Annotation::CHAR_SPLIT, $first);
+        $first = strpos($docDocument, Annotation::CHAR_JSON_START);
+        $last = strpos($docDocument, Annotation::CHAR_END, $first);
 
         $data = substr($docDocument, $first, ($last - $first));
 

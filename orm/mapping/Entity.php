@@ -27,9 +27,13 @@ class Entity implements Map
 
         foreach($reflection->getMethods() as $key => $method) 
         {
-            Annotation::getClass($method);
+           if ($method->getDocComment())
+           {
+                echo var_dump(Annotation::getInstance($method));
+           }
+            
         }
 
-        echo var_dump($this->type);
+        
     }
 }

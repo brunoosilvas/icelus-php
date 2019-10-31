@@ -53,4 +53,10 @@ class Strings extends Generic
         $length = strlen($this->value());
         return $length;
     }
+
+    public function trim()
+    {
+        $this->value = trim($this->value);
+        return $this->value;
+    }
 }
