@@ -8,7 +8,7 @@
  *
  */
 
-namespace icelus\bootstrap;
+namespace Icelus\Bootstrap;
 
 use icelus\http\Request;
 use icelus\http\Response;
