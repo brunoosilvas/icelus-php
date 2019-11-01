@@ -10,7 +10,7 @@
 
 namespace icelus\orm\mapping;
 
-interface Map
+interface MapInterface
 {
     function doReader() : void;
 

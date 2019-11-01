@@ -12,7 +12,7 @@ namespace icelus\orm\mapping;
 
 use icelus\util\Annotation;
 
-class Entity implements Map
+class Entity implements MapInterface
 {
     private $type;
     
@@ -23,6 +23,7 @@ class Entity implements Map
 
     public function doReader() : void
     {
+        echo var_dump($_ENV);
         $reflection = new \ReflectionClass($this->type);
 
         foreach($reflection->getMethods() as $key => $method) 
