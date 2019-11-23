@@ -4,21 +4,17 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
 namespace Icelus\Bootstrap;
 
-use icelus\http\Request;
-use icelus\http\Response;
+use Icelus\Http\Request;
+use Icelus\Http\Response;
 
 class Application 
 {
-    const ICELUS = "/icelus/i";
-    const EXTENSION_DEFAULT = ".php";
-    const FOLDER_VENDOR = "vendor";
-    
     private static $instance;
     
     private $config;
@@ -48,7 +44,6 @@ class Application
     {	
         $this->config = $config;		
         $this->registerTimeStartScript();
-        $this->registerAutoloadClass();
         $this->notifyError();
         
         $this->bufferPageStart();

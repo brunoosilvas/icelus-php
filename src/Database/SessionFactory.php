@@ -4,14 +4,14 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\orm;
+namespace Icelus\Database;
 
-use icelus\util\Files;
-use icelus\orm\Session;
+use Icelus\util\Files;
+use Icelus\orm\Session;
 
 class SessionFactory 
 {

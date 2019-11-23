@@ -4,13 +4,13 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\orm\mapping;
+namespace Icelus\Orm\mapping;
 
-use icelus\util\Annotation;
+use Icelus\Util\Annotation;
 
 class Entity implements MapInterface
 {

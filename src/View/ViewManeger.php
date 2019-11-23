@@ -4,16 +4,16 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\view;
+namespace Icelus\View;
 
-use icelus\bootstrap\Application;
-use icelus\util\Files;
-use icelus\util\Arrays;
-use icelus\view\resource\Resources;
+use Icelus\Bootstrap\Application;
+use Icelus\Util\Files;
+use Icelus\Util\Arrays;
+use Icelus\View\Resource\Resources;
 
 class ViewManeger 
 {

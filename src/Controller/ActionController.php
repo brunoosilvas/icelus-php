@@ -4,13 +4,13 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\controller;
+namespace Icelus\Controller;
 
-use icelus\view\ViewManeger;
+use Icelus\View\ViewManeger;
 
 abstract class ActionController 
 {

@@ -8,10 +8,10 @@
  *
  */
 
-namespace icelus\controller;
+namespace Icelus\Controller;
 
-use icelus\util\Files;
-use icelus\util\Utils;
+use Icelus\Util\Files;
+use Icelus\Util\Utils;
 
 class FactoryController
 {

@@ -4,11 +4,11 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\view\component;
+namespace Icelus\View\Component;
 
 class MenuItem {
     

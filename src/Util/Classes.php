@@ -4,13 +4,13 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\util;
+namespace Icelus\Util;
 
-use icelus\util\Utils;
+use Icelus\Util\Utils;
 
 class Classes 
 {

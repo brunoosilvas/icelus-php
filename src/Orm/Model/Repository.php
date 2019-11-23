@@ -3,12 +3,12 @@
 /**
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  */
 
-use icelus\orm\model\dao\Dao;
-use icelus\orm\model\Entity;
-use icelus\orm\Sesssion;
+use Icelus\Orm\Model\Dao\Dao;
+use Icelus\Orm\Model\Entity;
+use Icelus\Orm\Sesssion;
 
 class Repository
 {

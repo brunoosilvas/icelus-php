@@ -4,13 +4,13 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\http;
+namespace Icelus\Http;
 
-use icelus\http\Request;
+use Icelus\Http\Request;
 
 class Response 
 {
@@ -19,5 +19,3 @@ class Response
 		echo json_encode($data); 
 	}
 }
-
-

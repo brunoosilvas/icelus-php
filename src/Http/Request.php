@@ -4,13 +4,13 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\http;
+namespace Icelus\Http;
 
-use icelus\util\Arrays;
+use Icelus\Util\Arrays;
 
 class Request 
 {
@@ -52,4 +52,3 @@ class Request
 	}
 	
 }
-

@@ -8,9 +8,9 @@
  *
  */
 
-namespace icelus\orm\type;
+namespace Icelus\Orm\Type;
 
-use icelus\orm\type\Type;
+use Icelus\Orm\Type\Type;
 
 abstract class Generic implements Type 
 {

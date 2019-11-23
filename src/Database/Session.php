@@ -4,13 +4,13 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\orm;
+namespace Icelus\Database;
 
-use icelus\orm\dialect\Dialect;
+use Icelus\Orm\Dialect\Dialect;
 
 class Session implements Transaction
 {

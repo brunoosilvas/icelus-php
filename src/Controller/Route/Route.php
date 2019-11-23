@@ -8,12 +8,12 @@
  *
  */
 
-namespace icelus\controller\Route;
+namespace Icelus\Controller\Route;
 
-use icelus\controller\route\RouteInterface;
-use icelus\controller\FactoryController;
-use icelus\http\Request;
-use icelus\util\Classes;
+use Icelus\Controller\route\RouteInterface;
+use Icelus\Controller\FactoryController;
+use Icelus\Http\Request;
+use Icelus\Util\Classes;
 
 class Route implements RouteInterface
 {	
@@ -24,7 +24,7 @@ class Route implements RouteInterface
     const KEY_VIEW = "view";
     const KEY_CLASS = "class";
     
-    const CONTROLLER_PATH = "/controller/";
+    const CONTROLLER_PATH = "/Controller/";
     const CONTROLLER_PATH_VIEW = "/public/view/";
     const CONTROLLER_METHOD = "action";
 
@@ -49,7 +49,7 @@ class Route implements RouteInterface
         $this->factory = new FactoryController($controller);
         $this->controller = $this->factory->instantiate();
 		
-        if ($this->controller instanceof \icelus\controller\ActionController)
+        if ($this->controller instanceof \Icelus\Controller\ActionController)
         {
             $view = $this->config[Route::KEY_VIEW];
             $this->controller->buildViewManager($view);	

@@ -4,11 +4,11 @@
  *
  * @author Bruno Silva
  * @license MIT Licence
- * @link https://github.com/brunoosilvas/icelus
+ * @link https://github.com/brunoosilvas/icelus-php
  *
  */
 
-namespace icelus\orm;
+namespace Icelus\Database;
 
 interface Transaction
 {

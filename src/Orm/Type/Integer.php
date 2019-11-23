@@ -8,9 +8,9 @@
  *
  */
 
-namespace icelus\orm\type;
+namespace Icelus\Orm\Type;
 
-use icelus\orm\type\Generic;
+use Icelus\Orm\Type\Generic;
 
 class Integer extends Generic 
 {

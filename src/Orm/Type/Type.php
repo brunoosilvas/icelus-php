@@ -8,7 +8,7 @@
  *
  */
 
-namespace icelus\orm\type;
+namespace Icelus\Orm\Type;
 
 interface Type 
 {
