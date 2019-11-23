@@ -15,19 +15,21 @@ use Icelus\Util\Utils;
 
 class FactoryController
 {
+    private $src;
     private $uri;
     private $controller;
     
-    public function __construct($uri) 
+    public function __construct($src, $uri) 
     {
+        $this->src = $src;
         $this->uri = $uri;
     }
 	
     public function instantiate() 
-    {		
-        if (!Files::exists($this->uri, null))
+    {	
+        if (!Files::exists($this->src))
         {
-            throw new \ErrorException(sprintf("Controller not found in path \"%s\"", $this->uri));
+            throw new \ErrorException(sprintf("Controller not found in path \"%s\"", $this->src));
         }
 
         $this->controller = Utils::convertToNamespace($this->uri);

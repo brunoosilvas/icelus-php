@@ -3,8 +3,9 @@
     "description": "mvc framework for PHP",
     "type": "library",
     "keywords": [
-        "icelus",
-        "framework"
+        "framework",
+        "mvc",
+        "icelus"
     ],
     "license": "MIT",
     "authors": [
@@ -14,7 +15,9 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.2",
+        "twig/twig": "^2.10",
+        "symfony/polyfill-mbstring": "^1.10"
     },
     "autoload": {
         "psr-4": {

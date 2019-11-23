@@ -14,6 +14,7 @@ use Icelus\Controller\route\RouteInterface;
 use Icelus\Controller\FactoryController;
 use Icelus\Http\Request;
 use Icelus\Util\Classes;
+use Icelus\Util\Files;
 
 class Route implements RouteInterface
 {	
@@ -24,7 +25,7 @@ class Route implements RouteInterface
     const KEY_VIEW = "view";
     const KEY_CLASS = "class";
     
-    const CONTROLLER_PATH = "/Controller/";
+    const CONTROLLER_PATH = "\\Controller\\";
     const CONTROLLER_PATH_VIEW = "/public/view/";
     const CONTROLLER_METHOD = "action";
 
@@ -43,10 +44,12 @@ class Route implements RouteInterface
     }
 	
     public function intercept() 
-    {		
+    {	
+        
+        $controllerPath = $this->controllerPath();
         $controller = $this->config[Route::KEY_CONTROLLER];
 
-        $this->factory = new FactoryController($controller);
+        $this->factory = new FactoryController($controllerPath, $controller);
         $this->controller = $this->factory->instantiate();
 		
         if ($this->controller instanceof \Icelus\Controller\ActionController)
@@ -70,14 +73,28 @@ class Route implements RouteInterface
         $module = Request::get(Route::KEY_MODULE);
         return $module;
     }
+
+    private function controllerPath()
+    {
+        $controllerPath = "";
+        $controllerPath .= strtolower($this->module());
+        $controllerPath .= DIRECTORY_SEPARATOR;
+        $controllerPath .= Files::PATH_SOURCE;
+        $controllerPath .= DIRECTORY_SEPARATOR;
+        $controllerPath .= $this->controller();
+
+        return $controllerPath;
+    }
 	
     private function controller() 
     {
         $module = $this->module();
+        $controller = "";
+
         $class = Request::get(Route::KEY_CLASS);
         $class = Classes::class($class);
 
-        $controller = $module;
+        $controller .= ucfirst($module);
         $controller .= Route::CONTROLLER_PATH;
         $controller .= $class;
 
