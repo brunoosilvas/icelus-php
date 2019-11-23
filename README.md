@@ -1,2 +1,2 @@
 # icelus-php
-mvc framework for PHP
+mvc framework for PHP.
