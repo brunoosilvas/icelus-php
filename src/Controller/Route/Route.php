@@ -76,12 +76,18 @@ class Route implements RouteInterface
 
     private function controllerPath()
     {
+        $module = $this->module();
+        $module = strtolower($module);
+
+        $class = Request::get(Route::KEY_CLASS);
+        $class = Classes::class($class);
+
         $controllerPath = "";
-        $controllerPath .= strtolower($this->module());
-        $controllerPath .= DIRECTORY_SEPARATOR;
-        $controllerPath .= Files::PATH_SOURCE;
-        $controllerPath .= DIRECTORY_SEPARATOR;
-        $controllerPath .= $this->controller();
+        $controllerPath .= $module;
+        $controllerPath .= Files::SEPARATOR_PATH;
+        $controllerPath .= Files::SOURCE_PATH;
+        $controllerPath .= Route::CONTROLLER_PATH;
+        $controllerPath .= $class;
 
         return $controllerPath;
     }

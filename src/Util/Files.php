@@ -18,7 +18,8 @@ class Files
     const EXTENSION_XML = ".xml";
     const EXTENSION_JSON = ".json";
 
-    const PATH_SOURCE = "src";
+    const SOURCE_PATH = "src";
+    const SEPARATOR_PATH = DIRECTORY_SEPARATOR;
 
     public static function exists($path, $extension = null)
     {
