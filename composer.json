@@ -1,6 +1,7 @@
 {
     "name": "brunoosilvas/icelus",
     "description": "mvc framework for PHP",
+    "type": "library",
     "keywords": [
         "icelus",
         "framework"
