@@ -1,0 +1,23 @@
+{
+    "name": "brunoosilvas/icelus",
+    "description": "mvc framework for PHP",
+    "keywords": [
+        "icelus",
+        "framework"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bruno Silva",
+            "email": "brunoosilvas@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Icelus": "src"
+        }
+    }
+}
